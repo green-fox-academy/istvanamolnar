@@ -1,0 +1,79 @@
+body {
+	background: url(topography.png);
+	background-repeat: repeat;
+	color: #333333; /* All text and header background */
+	font-family: Consolas, monaco, monospace;
+	margin: 0;
+	padding: 0;
+}
+
+.header {
+	background: #333333;
+	padding: 10px 10%;
+}
+
+.menu {
+	color: #ff0099;
+	float: right;
+	font-size: 1.2em;
+	padding: 8px 25px;
+}
+
+
+.my-name {
+	font-family: 'Merriweather', serif;
+	font-size: 3.5em;
+	font-weight: 700;
+	padding: 60px 10% 0 10%;
+}
+
+.job-title {
+	color: #ff0099;
+	font-family: 'Merriweather', serif;
+	font-size: 2em;
+	font-weight: 400;
+	padding: 0 10%;
+}
+
+.introduction	{
+	font-size: 1.5em;
+	font-weight: 500;
+	padding: 0 10%;
+}
+
+.separator {
+	padding: 35px;
+	text-align: center;
+}
+
+#secondPart	{
+	font-family: 'Merriweather', serif;
+	font-size: 2em;
+	font-weight: 700;
+	text-align: center;
+}
+
+.title {
+	font-family: 'Merriweather', serif;
+	font-size: 1.5em;
+	font-weight: 700;
+	margin: -10px 0; /* Could not come up with better solution */
+	padding: 20px 10% 0 10%;
+}
+
+.explanation {
+	font-size: 1.2em;
+	font-weight: 500;
+	line-height: 1.5;
+	padding: 0 10%;
+}
+
+.star {
+	font-size: 0.6em;
+}
+
+.smallprint {
+	color: #ff0099;
+	font-size: 0.8em;
+	padding: 10px 10%;
+}
