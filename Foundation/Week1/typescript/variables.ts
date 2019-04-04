@@ -1,3 +1,5 @@
+'use strict';
+
 // Store your favorite number in a variable (as a number)
 // And print it like this: 'My favorite number is: 8'
 let favoriteNumber: number = 89;
@@ -74,3 +76,18 @@ console.log(i1 > (i2 * i2) && i1 < (i2 * i2 * i2) ? true : false);
 let j: number = 1521;
 // tell if j is divisible by 3 or 5 (as a boolean) - no
 console.log((j % 3 === 0) && (j % 5 === 0));
+
+
+// Write a program that stores 3 sides of a cuboid as variables (floats)
+// The program should write the surface area and volume of the cuboid like:
+//
+// Surface Area: 600
+// Volume: 1000
+
+let k: number;
+let l: number;
+let m: number;
+
+console.log("Surface Area: " + (k * l * m));
+console.log("Volume: " + (k + l + m));
+
