@@ -91,3 +91,16 @@ let m: number;
 console.log("Surface Area: " + (k * l * m));
 console.log("Volume: " + (k + l + m));
 
+
+
+let currentHours: number = 14;
+let currentMinutes: number = 34;
+let currentSeconds: number = 42;
+// Write a program that prints the remaining seconds (as an integer) from a
+// day if the current time is represented by these variables
+
+let remainingHours: number = 23 - currentHours;
+let remainingMinutes: number = 60 - currentMinutes;
+let remainingSeconds: number = 60 - currentSeconds;
+//console.log(remainingHours + ":" + remainingMinutes + ":" + remainingSeconds);
+console.log("Remaining seconds: " + ((remainingHours * 60 + remainingMinutes) * 60 + remainingSeconds));
