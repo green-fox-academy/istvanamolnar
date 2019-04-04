@@ -29,24 +29,24 @@ let myHeight: number = 1.77;
 let amIMarried: boolean = false;
 
 
-let a: number = 3;
+let aa: number = 3;
 // make it bigger by 10
-a += 10;
+aa += 10;
 console.log(a);
 
-let b: number = 100;
+let bb: number = 100;
 // make it smaller by 7
-b -= 7;
+bb -= 7;
 console.log(b);
 
-let c: number = 44;
+let cc: number = 44;
 // double c's value
-c *= 2;
+cc *= 2;
 console.log(c);
 
-let d: number = 125;
+let dd: number = 125;
 // divide d's value by 5
-d /= 5;
+dd /= 5;
 console.log(d);
 
 let e: number = 8;
