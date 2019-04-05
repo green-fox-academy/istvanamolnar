@@ -12,7 +12,7 @@ function repeat(character: string, num: number) {
 
 
 // Write a program that draws a pyramid
-function drawPyramid(numberOfLines:number) {
+function drawPyramid(numberOfLines: number) {
     let star: string = "*";
     for (let i = numberOfLines; i > 0; i--) {
         console.log(repeat(" ", i), star);
@@ -47,7 +47,7 @@ function drawChessTable(numberOfLines: number) {
     if (numberOfLines % 2) {
         console.log("Please pass an even number");
     } else {
-        for (let i = 0; i < numberOfLines / 2; i++) { 
+        for (let i = 0; i < numberOfLines / 2; i++) {
             console.log("'" + repeat("% ", numberOfLines / 2) + "'");
             console.log("'" + repeat(" %", numberOfLines / 2) + "'");
         }
@@ -56,7 +56,7 @@ function drawChessTable(numberOfLines: number) {
 //drawChessTable(8);
 
 // Write a program that draws a diamond
-function drawTop(numberOfLines:number) {
+function drawTop(numberOfLines: number) {
     let half: number = numberOfLines / 2;
     let star: string = "*";
     if (half % 1) {
@@ -71,24 +71,24 @@ function drawTop(numberOfLines:number) {
         }
     }
 }
-function drawBottom(numberOfLines:number) {
+function drawBottom(numberOfLines: number) {
     let half: number = numberOfLines / 2;
     if (half % 1) {
         let stars: string = repeat("*", (half - 0.5) * 2 - 1);
         for (let i = 1; i <= half - 0.5; i++) {
             console.log(repeat(" ", i) + stars);
-                stars = stars.slice(0, stars.length - 2);
+            stars = stars.slice(0, stars.length - 2);
         }
     } else {
         let stars: string = repeat("**", half - 1) + "*";
         for (let i = 0; i <= half; i++) {
             console.log(repeat(" ", i) + stars);
-                stars = stars.slice(0, stars.length - 2);
+            stars = stars.slice(0, stars.length - 2);
         }
     }
 }
 function drawDiamond(numberOfLines: number) {
-        drawTop(numberOfLines);
-        drawBottom(numberOfLines);
+    drawTop(numberOfLines);
+    drawBottom(numberOfLines);
 }
 //drawDiamond(14);
