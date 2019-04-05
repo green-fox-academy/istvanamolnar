@@ -20,3 +20,6 @@ console.log('Hello, Pöli!');
 console.log('Istvan Molnar');
 console.log(30);
 console.log(1.78);
+
+let string: string = "";
+string.repeat(2);

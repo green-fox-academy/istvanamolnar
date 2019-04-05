@@ -14,12 +14,12 @@ function repeat(character: string, num: number) {
 // Write a program that draws a pyramid
 function drawPyramid(numberOfLines: number) {
     let star: string = "*";
-    for (let i = numberOfLines; i > 0; i--) {
-        console.log(repeat(" ", i), star);
+    for (let i = numberOfLines - 1; i >= 0; i--) {
+        console.log(repeat(" ", i) + star);
         star += "**";
     }
 }
-//drawPyramid(6);
+drawPyramid(6);
 
 
 // Write a program that draws a square like this:
