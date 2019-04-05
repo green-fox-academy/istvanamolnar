@@ -87,10 +87,8 @@ function drawBottom(numberOfLines:number) {
         }
     }
 }
-
 function drawDiamond(numberOfLines: number) {
         drawTop(numberOfLines);
         drawBottom(numberOfLines);
 }
 //drawDiamond(14);
-
