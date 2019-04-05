@@ -57,32 +57,39 @@ function drawChessTable(numberOfLines: number) {
 
 // Write a program that draws a diamond
 function drawTop(numberOfLines:number) {
+    let half: number = numberOfLines / 2;
     let star: string = "*";
-    for (let i = numberOfLines; i >= 0; i--) {
-        console.log(repeat(" ", i), star);
-        star += "**";
+    if (half % 1) {
+        for (let i = half - 0.5; i >= 0; i--) {
+            console.log(repeat(" ", i) + star);
+            star += "**";
+        }
+    } else {
+        for (let i = half - 1; i >= 0; i--) {
+            console.log(repeat(" ", i) + star);
+            star += "**";
+        }
     }
 }
 function drawBottom(numberOfLines:number) {
-    if (numberOfLines % 2) {
-        let stars: string = repeat("*", numberOfLines * 2 - 2);
-        for (let i = 1; i <= numberOfLines - 1; i++) {
-            console.log(" " + repeat(" ", i), stars);
+    let half: number = numberOfLines / 2;
+    if (half % 1) {
+        let stars: string = repeat("*", (half - 0.5) * 2 - 1);
+        for (let i = 1; i <= half - 0.5; i++) {
+            console.log(repeat(" ", i) + stars);
                 stars = stars.slice(0, stars.length - 2);
         }
-        console.log(repeat(" ", numberOfLines + 1) + "*");
     } else {
-        let stars: string = repeat("*", numberOfLines * 2) + "*";
-        for (let i = 0; i <= numberOfLines - 1; i++) {
-            console.log(repeat(" ", i), stars);
+        let stars: string = repeat("**", half - 1) + "*";
+        for (let i = 0; i <= half; i++) {
+            console.log(repeat(" ", i) + stars);
                 stars = stars.slice(0, stars.length - 2);
         }
-        console.log(repeat(" ", numberOfLines + 1) + "*");
     }
 }
 
 function drawDiamond(numberOfLines: number) {
-        drawTop(numberOfLines / 2);
-        drawBottom(numberOfLines / 2);
+        drawTop(numberOfLines);
+        drawBottom(numberOfLines);
 }
-drawDiamond(8);
+drawDiamond(14);
