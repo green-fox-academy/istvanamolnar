@@ -2,7 +2,8 @@
 
 
 // Repeats a given character, num times and adds it to a string
-function repeat(character: string, string: string, num: number) {
+function repeat(character: string, num: number) {
+    let string: string = "";
     for (let i = 0; i < num; i++) {
         string += character;
     }
@@ -12,11 +13,9 @@ function repeat(character: string, string: string, num: number) {
 
 // Write a program that draws a pyramid
 function drawPyramid(numberOfLines:number) {
-    let space: string = "";
     let star: string = "*";
-    let counter2: number = numberOfLines;
     for (let i = numberOfLines; i > 0; i--) {
-        console.log(repeat(" ", space, i), star);
+        console.log(repeat(" ", i), star);
         star += "**";
     }
 }
@@ -24,24 +23,66 @@ function drawPyramid(numberOfLines:number) {
 
 // Write a program that draws a square like this:
 function drawSquare(numberOfLines: number) {
-    let space: string = "";
-    console.log(repeat("%", space, numberOfLines));
+    console.log(repeat("%", numberOfLines));
     for (let i = 0; i < numberOfLines - 2; i++) {
-        console.log("%" + repeat(" ", space, numberOfLines - 2) + "%");
+        console.log("%" + repeat(" ", numberOfLines - 2) + "%");
     }
-    console.log(repeat("%", space, numberOfLines));
+    console.log(repeat("%", numberOfLines));
 }
 //drawSquare(8);
 
 
 // Write a program that draws a square with a diagonal
 function drawSquareWithDiagonal(numberOfLines: number) {
-    let space: string = "";
-    let percent: string = "%";
-    console.log(repeat("%", space, numberOfLines));
+    console.log(repeat("%", numberOfLines));
     for (let i = 0; i < numberOfLines - 2; i++) {
-        console.log("%" + repeat(" ", space, i) + "%" + repeat(" ", space, numberOfLines - 3 - i) + "%");
+        console.log("%" + repeat(" ", i) + "%" + repeat(" ", numberOfLines - 3 - i) + "%");
     }
-    console.log(repeat("%", space, numberOfLines));
+    console.log(repeat("%", numberOfLines));
 }
 //drawSquareWithDiagonal(10);
+
+// Create a program that draws a chess table
+function drawChessTable(numberOfLines: number) {
+    if (numberOfLines % 2) {
+        console.log("Please pass an even number");
+    } else {
+        for (let i = 0; i < numberOfLines / 2; i++) { 
+            console.log("'" + repeat("% ", numberOfLines / 2) + "'");
+            console.log("'" + repeat(" %", numberOfLines / 2) + "'");
+        }
+    }
+}
+//drawChessTable(8);
+
+// Write a program that draws a diamond
+function drawTop(numberOfLines:number) {
+    let star: string = "*";
+    for (let i = numberOfLines; i >= 0; i--) {
+        console.log(repeat(" ", i), star);
+        star += "**";
+    }
+}
+function drawBottom(numberOfLines:number) {
+    if (numberOfLines % 2) {
+        let stars: string = repeat("*", numberOfLines * 2 - 2);
+        for (let i = 1; i <= numberOfLines - 1; i++) {
+            console.log(" " + repeat(" ", i), stars);
+                stars = stars.slice(0, stars.length - 2);
+        }
+        console.log(repeat(" ", numberOfLines + 1) + "*");
+    } else {
+        let stars: string = repeat("*", numberOfLines * 2) + "*";
+        for (let i = 0; i <= numberOfLines - 1; i++) {
+            console.log(repeat(" ", i), stars);
+                stars = stars.slice(0, stars.length - 2);
+        }
+        console.log(repeat(" ", numberOfLines + 1) + "*");
+    }
+}
+
+function drawDiamond(numberOfLines: number) {
+        drawTop(numberOfLines / 2);
+        drawBottom(numberOfLines / 2);
+}
+drawDiamond(8);
