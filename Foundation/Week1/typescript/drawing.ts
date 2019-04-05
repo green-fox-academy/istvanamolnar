@@ -1,7 +1,7 @@
 "use strict";
 
 
-// Repeats a given character, num times and adds it to a string
+// Returns a given 'character' repeated 'num' of times
 function repeat(character: string, num: number) {
     let string: string = "";
     for (let i = 0; i < num; i++) {
@@ -20,6 +20,7 @@ function drawPyramid(numberOfLines: number) {
     }
 }
 //drawPyramid(6);
+
 
 // Write a program that draws a square like this:
 function drawSquare(numberOfLines: number) {
@@ -42,6 +43,7 @@ function drawSquareWithDiagonal(numberOfLines: number) {
 }
 //drawSquareWithDiagonal(10);
 
+
 // Create a program that draws a chess table
 function drawChessTable(numberOfLines: number) {
     if (numberOfLines % 2) {
@@ -54,6 +56,7 @@ function drawChessTable(numberOfLines: number) {
     }
 }
 //drawChessTable(8);
+
 
 // Write a program that draws a diamond
 function drawTop(numberOfLines: number) {
