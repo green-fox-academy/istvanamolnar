@@ -1,46 +1,54 @@
-"use strict"
-
-//  Create a function that takes a list of numbers as a parameter
-//  Returns a list of numbers where every number in the list occurs only once
-function unique(arr: number[]) {
-    return arr.reduce((accumulator, currentValue) => {
-        if (accumulator.indexOf(currentValue) === -1) {
-          accumulator.push(currentValue);
-        }
-        return accumulator;
-      }, [])
+// -  Create a variable named `integers` with the following content: `[4, 5, 6, 7]`
+// -  Log each the element of `integers` to the console*
+// *hint: use a loop, console.log(integers) won't cut it
+// -  bonus for using the correct built in array method
+let integers: number[] = [4, 5, 6, 7];
+function print(array: number[]) {
+    integers.forEach(x => console.log(x));
 }
-//console.log(unique([1, 11, 34, 11, 52, 61, 1, 34]))
 
-
-//  Create a function that takes a list of numbers as parameter
-//  Returns a list where the elements are sorted in ascending numerical order
-//  Make a second boolean parameter, if it's `true` sort that list descending
-function bubble(arr: number[]) {
-    return arr.sort((a, b) => a - b);
+// -  Create an array named `numList` with the following content: `[1, 2, 3, 8, 5, 6]`
+// -  Change the 8 to 4 with the `.map` method 
+// -  Print the fourth element as a test
+let numList: number[] = [1, 2, 3, 8, 5, 6];
+function eightToFour(array: number[]) {
+    array.map(x => x === 8 ? x = 4 : x);
 }
-function advancedBubble(arr: number[], boolean: boolean) {
-    return boolean ? arr.sort((a, b) => b - a) : arr.sort((a, b) => a - b);
+
+// -  Create a variable named `numList` with the following content: `[1, 2, 3, 4, 5]`
+// -  Increment the third element simply by accessing it
+// -  Log the third element to the console
+let numList2: number[] = [1, 2, 3, 4, 5];
+function incrementTheThird(array: number[]) {
+    array[2]++;
+    return array;
 }
-//console.log(bubble([34, 12, 24, 9, 5]));
-//  should print [5, 9, 12, 24, 34]
-//console.log(advancedBubble([34, 12, 24, 9, 5], false));
-//  should print [34, 24, 12, 9, 5]
+//console.log(incrementTheThird(numList2));
 
 
-//  Create a function that takes a number and an array of numbers as a parameter
-//  Returns the indices of the numbers in the array of which the first number is a part of
-//  Or returns an empty list if the number is not part of any of the numbers in the array
-function subint(num: number, array: number[]): any{
-    let solution: number[] = [];
-    array.forEach(x => x.toString().match(num.toString()) ? solution.push(x) : false);
-    /*for (let i in array) {
-        array[i].toString().match(num.toString()) ? solution.push(array[i]) : false;
-    } */
-    return solution;
+// -  Create an array variable named `animals`
+//    with the following content: `["koal", "pand", "zebr"]`
+// -  Add all elements an `"a"` at the end
+let animals: string[] = ["koal", "pand", "zebr"];
+function addA(array: string[]) {
+    return array.map(x => x + "a");
 }
-// Example
-console.log(subint(2, [1, 26, 3332, 555523333, 5000, 11, 34, 52, 61]));
-// should print: `[0, 1, 4]`
-console.log(subint(9, [1, 11, 34, 52, 61]));
-// should print: '[]'
+//console.log(addA(animals));
+
+
+// -  Create an array variable named `drinks` with the following content: `['Gin', 'Whiskey', 'Wine', 'Beer']`
+// -  Double all the strings in the array, use a built in array method instead of a loop
+// It should print: ['GinGin', 'WhiskeyWhiskey', 'WineWine', 'BeerBeer']`
+let drinks: string[] = ['Gin', 'Whiskey', 'Wine', 'Beer'];
+function doubleIt(array: string[]) {
+    return array.map(x => x + x);
+}
+//console.log(doubleIt(drinks));
+
+
+// -  Create a variable named `ai` with the following content: `[3, 4, 5, 6, 7]`
+// -  Log the sum of the elements in `ai` to the console
+let ai: number[] = [3, 4, 5, 6, 7];
+function logSum(array: number[]) {
+    console.log(array.reduce((a, b) => a + b));
+}
