@@ -17,14 +17,50 @@ function priceOfItem(object: any, item: string) {
 function mostExpensive(object: any) {
     return Object.values(object).reduce((a, b) => b > a ? b : a);
 }
-console.log(mostExpensive(products));
+//console.log(mostExpensive(products));
 
 //What is the average price?
 function avgPrice(object: any) {
-    return Object.values(object).reduce((x, y) => x + y);
+//    return Object.values(object).forEach((x, y) => x + y);
 }
-console.log(avgPrice(products));
+//console.log(avgPrice(products));
 
 //How many products' price is below 300?
+function belowPrice(object: any, number: number) {
+    return Object.values(object).filter(x => x < number).length;
+}
+//console.log(belowPrice(products, 300));
+
 //Is there anything we can buy for exactly 125?
+function exactPrice(object: any, number: number) {
+    return Object.values(object).filter(x => x === number);
+}
+//console.log(exactPrice(products, 150));
+
 //What is the cheapest product?
+function cheapest(object: any) {
+    return Object.values(object).reduce((a, b) => b < a ? b : a);
+}
+//console.log(cheapest(products));
+
+//Which products cost less than 201? (just the name)
+function nameOfCheapProducts(object: any, number: number) {
+    let cheapOnes: any = {};
+    Object.keys(object).filter(key => {
+        let value = object[key];
+        value < number ? cheapOnes[key] = value : false;
+    });
+    return Object.keys(cheapOnes);
+}
+//console.log(nameOfCheapProducts(products, 151));
+
+//Which products cost more than 150? (name + price)
+function expensiveProducts(object: any, number: number) {
+    let expensiveOnes: any = {};
+    Object.keys(object).filter(key => {
+        let value = object[key];
+        number < value ? expensiveOnes[key] = value : false;
+    });
+    return expensiveOnes;
+}
+console.log(expensiveProducts(products, 150));
