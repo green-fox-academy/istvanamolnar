@@ -38,24 +38,22 @@ function solveTheMiddleLayer() {
 function solveTheBottom() {
     turnTheCubeUpsideDown();
 
-    flipTheEdgePieces() {
+    function flipTheEdgePieces() {
         perform("U  R'  U'  R  U  R  U'  R'");
     }
-    flipCornerPieces() {
+    function flipCornerPieces() {
         perform("R' B' R B") && turnTop();
     }
-    rotateEdgePieces() {
+    function rotateEdgePieces() {
         perform("R  U'  L'  U  R'  2U  L  U'  L'  2U  L")
     }
-    rotateCornerPieces() {
+    function rotateCornerPieces() {
         perform("2R  2F'  R'  B'  R  2F  R'  B  R'");
     }
-
 }
 
 solveTheCube('3x3x3');
 
 https://ruwix.com/the-rubiks-cube/advanced-cfop-fridrich/orient-the-last-layer-oll/
-
 
 muscle memory
