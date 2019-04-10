@@ -27,7 +27,7 @@ function findOwner(object: any, string: string) {
       });
     return owner;
 }
-//console.log(findOwner(phonebook, "307-687-2982"));
+console.log(findOwner(phonebook, "307-687-2982"));
 
 //Do we know Chris E. Myers' phone number?
 function doesNumberExist(object: any, name: string) {
