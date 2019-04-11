@@ -21,9 +21,9 @@ function mostExpensive(object: any) {
 
 //What is the average price?
 function avgPrice(object: any) {
-//    return Object.values(object).forEach((x, y) => x + y);
+    return Object.values(object).reduce((x:any, y:any) => x + y);
 }
-//console.log(avgPrice(products));
+console.log(avgPrice(products));
 
 //How many products' price is below 300?
 function belowPrice(object: any, number: number) {
@@ -46,13 +46,13 @@ function cheapest(object: any) {
 //Which products cost less than 201? (just the name)
 function nameOfCheapProducts(object: any, number: number) {
     let cheapOnes: any = {};
-    Object.keys(object).filter(key => {
+    Object.keys(object).map(key => {
         let value = object[key];
         value < number ? cheapOnes[key] = value : false;
     });
     return Object.keys(cheapOnes);
 }
-//console.log(nameOfCheapProducts(products, 151));
+console.log(nameOfCheapProducts(products, 151));
 
 //Which products cost more than 150? (name + price)
 function expensiveProducts(object: any, number: number) {
@@ -63,4 +63,4 @@ function expensiveProducts(object: any, number: number) {
     });
     return expensiveOnes;
 }
-console.log(expensiveProducts(products, 150));
+//console.log(expensiveProducts(products, 150));
