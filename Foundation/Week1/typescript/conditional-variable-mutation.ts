@@ -9,10 +9,10 @@ console.log(out);
 
 let b: number = 13;
 let out2: string = '';
-// if b is between 10 and 20 set out2 to "Sweet!"
-// if less than 10 set out2 to "Less!",
-// if more than 20 set out2 to "More!"
-b >= 10 && b <= 20 ? out2 = "Sweet!" : b < 10 ? out2 = "Less!" : b > 20 ? out2 = "More!" : false;
+// if b is between 10 and 20 set out2 to 'Sweet!'
+// if less than 10 set out2 to 'Less!',
+// if more than 20 set out2 to 'More!'
+b >= 10 && b <= 20 ? out2 = 'Sweet!' : b < 10 ? out2 = 'Less!' : b > 20 ? out2 = 'More!' : false;
 console.log(out2);
 
 
@@ -39,9 +39,9 @@ let time: number = 120;
 let out3: string = '';
 // if d is dividable by 4
 // and time is not more than 200
-// set out3 to "check"
+// set out3 to 'check'
 // if time is more than 200
-// set out3 to "Time out"
-// otherwise set out3 to "Run Forest Run!"
-d % 4 === 0 && time <= 200 ? out3 = "check" : time > 200 ? out3 = "Time out" : out3 = "Run Forest Run!"
+// set out3 to 'Time out'
+// otherwise set out3 to 'Run Forest Run!'
+d % 4 === 0 && time <= 200 ? out3 = 'check' : time > 200 ? out3 = 'Time out' : out3 = 'Run Forest Run!'
 console.log(out3);

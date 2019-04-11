@@ -7,7 +7,7 @@ console.log('Hello, Istvan!');
 // Modify this program to console.log Humpty Dumpty riddle correctly
 console.log('Humpty Dumpty sat on a wall,');
 console.log('Humpty Dumpty had a great fall.');
-console.log('All the king\'s horses' + "\n" + 'And all the king\'s men');
+console.log('All the king\'s horses' + '\n' + 'And all the king\'s men');
 console.log('Couldn\'t put Humpty together again.');
 
 // Greet 3 of your classmates with this program, in three separate lines like:
@@ -21,5 +21,5 @@ console.log('Istvan Molnar');
 console.log(30);
 console.log(1.78);
 
-let string: string = "";
+let string: string = '';
 string.repeat(2);

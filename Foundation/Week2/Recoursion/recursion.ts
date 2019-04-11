@@ -53,7 +53,7 @@ function greatestCommonDivisor(num1: number, num2: number, i:number = Math.ceil(
 
 //We have bunnies standing in a line, numbered 1, 2, ... The odd bunnies (1, 3, ..) have the normal 2 ears. 
 //The even bunnies (2, 4, ..) we'll say have 3 ears, because they each have a raised foot. 
-//Recursively return the number of "ears" in the bunny line 1, 2, ... n (without loops or multiplication).
+//Recursively return the number of 'ears' in the bunny line 1, 2, ... n (without loops or multiplication).
 function bunnyEars(num: number): any {
     return num <= 0 ? 0 : num % 2 === 0 ? 3 + bunnyEars(num - 1) : 2 + bunnyEars(num - 1);
 }
@@ -69,8 +69,14 @@ function bunnyEars(num: number): any {
 
 //Given a string, compute recursively (no loops) a new string where all the lowercase 'x' chars have been changed to 'y' chars.
 function swapXtoY(str: string, i: number = str.length): any {
-    str[i] === "x" ? str[i] === "y" : false;
-    return i === 0 ? str : swapXtoY(str, i - 1);
+    return i === 0 ? str : swapXtoY(str.replace('x', 'y'), i - 1);
 }
-console.log(swapXtoY("asdrwxdszwsifxxvewruxblfx"));
+//console.log(swapXtoY('asdrwxdszwsifxxvewruxblfx'));
 
+//Define a recursive fibonacci(n) method that returns the nth fibonacci number, with n=0 representing the start of the sequence.
+function fibonacci(n: number): any {
+    if (n === 0) {
+
+    } 
+    
+}

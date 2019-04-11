@@ -1,34 +1,34 @@
-"use strict";
+'use strict';
 
 let Price: any = {
-    "Milk":	1.07,
-    "Rice":	1.59,
-    "Eggs":	3.14,
-    "Cheese": 12.60,
-    "Chicken":9.40,
-    "Apple": 2.31,
-    "Tomato": 2.58,
-    "Potato": 1.75,
-    "Onion": 1.10
+    'Milk':	1.07,
+    'Rice':	1.59,
+    'Eggs':	3.14,
+    'Cheese': 12.60,
+    'Chicken':9.40,
+    'Apple': 2.31,
+    'Tomato': 2.58,
+    'Potato': 1.75,
+    'Onion': 1.10
 }
 
 let Bob: any = {
-    "Milk":	3,
-    "Rice":	2,
-    "Eggs":	2,
-    "Cheese": 1,
-    "Chicken": 4,
-    "Apple": 1,
-    "Tomato": 2,
-    "Potato": 1,
+    'Milk':	3,
+    'Rice':	2,
+    'Eggs':	2,
+    'Cheese': 1,
+    'Chicken': 4,
+    'Apple': 1,
+    'Tomato': 2,
+    'Potato': 1,
 }
 
 let Alice: any = {
-    "Rice": 1,
-    "Eggs": 5,
-    "Chicken": 2,
-    "Apple": 1,
-    "Tomato": 10
+    'Rice': 1,
+    'Eggs': 5,
+    'Chicken': 2,
+    'Apple': 1,
+    'Tomato': 10
 }
 
 function priceToPay(shop: any, customer: any): any {

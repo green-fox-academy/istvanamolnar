@@ -13,7 +13,7 @@ function substr2(str: string, keyword: string) {
     while (i < (str.length - keyword.length)) {
             if (keyword[0] === str[i]) {
                 //str.slice();
-                let sliced: string = "";
+                let sliced: string = '';
                 for (let j = i; j < (i + keyword.length); j++) {
                     sliced += str[j];
                 }
@@ -31,7 +31,7 @@ function substr2(str: string, keyword: string) {
 //  Example
 
 // should print: `17`
-console.log(substr2("this is what I'm searching in", "searching"));
+console.log(substr2('this is what I\'m searching in', 'searching'));
 
 // should print: `-1`
-console.log(substr2("this is what I'm searching in", "not"));
+console.log(substr2('this is what I\'m searching in', 'not'));

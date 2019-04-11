@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 // -  Create a variable named `baseNum` and assign the value `123` to it
 // -  Create a function called `doubling` that doubles it's input parameter and returns with an integer
@@ -15,20 +15,20 @@ function doubling(num: number) {
 //     -  Greeting is printing e.g. `Greetings, dear Greenfox`
 //     -  Prepare for the special case when no parameters are given
 // -  Greet `nameToGreet`
-let nameToGreet: string = "Greenfox";
+let nameToGreet: string = 'Greenfox';
 function greet(str: string) {
     console.log(str ? `Greeting, dear ${str}` : `Ẁhat is your name, friend?`);
 }
-//greet("");
+//greet('');
 
 
 // -  Create a string variable named `typo` and assign the value `Chinchill` to it
 // -  Write a function called `appendAFunc` that gets a string as an input,
 //    appends an 'a' character to its end and returns with a string
 // -  Print the result of `appendAFunc(typo)`
-let typo: string = "Chinchill";
+let typo: string = 'Chinchill';
 function appendAFunc(str: string) {
-    return str += "a";
+    return str += 'a';
 }
 //console.log(appendAFunc(typo));
 

@@ -3,7 +3,7 @@
 // Store your favorite number in a variable (as a number)
 // And print it like this: 'My favorite number is: 8'
 let favoriteNumber: number = 89;
-console.log("My favourite number is: " + favoriteNumber);
+console.log('My favourite number is: ' + favoriteNumber);
 
 // Swap the values of these variables
 let first: number = 123;
@@ -16,11 +16,11 @@ console.log(second);
 // Print the Body mass index (BMI) based on these values
 let massInKg: number = 81.2;
 let heightInM: number = 1.78;
-console.log("BMI: " + (massInKg / heightInM).toFixed());
+console.log('BMI: ' + (massInKg / heightInM).toFixed());
 
 // Define several things as a variable, then print their values
 // Your name as a string
-const myName: string = "Istvan Molnar";
+const myName: string = 'Istvan Molnar';
 // Your age as a number
 let myAge: number = 30;
 // Your height in meters as a number
@@ -83,14 +83,14 @@ console.log((j % 3 === 0) && (j % 5 === 0));
 //
 // Surface Area: 600
 // Volume: 1000
+{
+let k: number = 0;
+let l: number = 0;
+let m: number = 0;
 
-let k: number;
-let l: number;
-let m: number;
-
-console.log("Surface Area: " + (k * l * m));
-console.log("Volume: " + (k + l + m));
-
+console.log('Surface Area: ' + (k * l * m));
+console.log('Volume: ' + (k + l + m));
+}
 
 
 let currentHours: number = 14;
@@ -102,5 +102,5 @@ let currentSeconds: number = 42;
 let remainingHours: number = 23 - currentHours;
 let remainingMinutes: number = 60 - currentMinutes;
 let remainingSeconds: number = 60 - currentSeconds;
-//console.log(remainingHours + ":" + remainingMinutes + ":" + remainingSeconds);
-console.log("Remaining seconds: " + ((remainingHours * 60 + remainingMinutes) * 60 + remainingSeconds));
+//console.log(remainingHours + ':' + remainingMinutes + ':' + remainingSeconds);
+console.log('Remaining seconds: ' + ((remainingHours * 60 + remainingMinutes) * 60 + remainingSeconds));

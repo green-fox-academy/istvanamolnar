@@ -27,11 +27,11 @@ function incrementTheThird(array: number[]) {
 
 
 // -  Create an array variable named `animals`
-//    with the following content: `["koal", "pand", "zebr"]`
-// -  Add all elements an `"a"` at the end
-let animals: string[] = ["koal", "pand", "zebr"];
+//    with the following content: `['koal', 'pand', 'zebr']`
+// -  Add all elements an `'a'` at the end
+let animals: string[] = ['koal', 'pand', 'zebr'];
 function addA(array: string[]) {
-    return array.map(x => x + "a");
+    return array.map(x => x + 'a');
 }
 //console.log(addA(animals));
 
