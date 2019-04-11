@@ -1,4 +1,4 @@
-'use strict'
+/*'use strict'
 
 function solveTheCube(size: string) {
     solveTheCross(white);
@@ -20,7 +20,7 @@ function solveTheTopCorners(color: string) {
         perform("D  L  D'  L'");
     } else if ("white is on the right") {
         perform("D'  L'  D  L");
-    } else /* white is facing to the bottom*/ {
+    } else { //white is facing to the bottom 
         turnTheCubeUpsideDown();
         perform("sexy move".repeat(3));
     }
@@ -56,4 +56,4 @@ solveTheCube('3x3x3');
 
 https://ruwix.com/the-rubiks-cube/advanced-cfop-fridrich/orient-the-last-layer-oll/
 
-muscle memory
+muscle memory*/
