@@ -48,7 +48,7 @@ function greatestCommonDivisor(num1: number, num2: number, i:number = Math.ceil(
     }
     return num1 % i === 0 && num2 % i === 0 ? i : (greatestCommonDivisor(num1, num2, i - 1));
 }
-console.log(greatestCommonDivisor(72, 132)); // = 12;
+//console.log(greatestCommonDivisor(72, 132)); // = 12;
 }
 
 //We have bunnies standing in a line, numbered 1, 2, ... The odd bunnies (1, 3, ..) have the normal 2 ears. 
@@ -68,3 +68,9 @@ function bunnyEars(num: number): any {
 //console.log(bunnyEars(20)); // = 50;
 
 //Given a string, compute recursively (no loops) a new string where all the lowercase 'x' chars have been changed to 'y' chars.
+function swapXtoY(str: string, i: number = str.length): any {
+    str[i] === "x" ? str[i] === "y" : false;
+    return i === 0 ? str : swapXtoY(str, i - 1);
+}
+console.log(swapXtoY("asdrwxdszwsifxxvewruxblfx"));
+
