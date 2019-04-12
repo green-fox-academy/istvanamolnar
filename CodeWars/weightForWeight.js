@@ -24,7 +24,7 @@ function orderWeight(strng) {
 
 
 // TASK: 
-// A string of numbers to be sorted and returned by the sum of digits as a string.
+// A string of numbers to be sorted by the sum of digits and returned as a string.
 
 // Sample tests: 
 //Test.describe("Order Weights",function() {
