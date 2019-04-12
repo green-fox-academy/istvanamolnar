@@ -1,5 +1,5 @@
 'use strict';
-export{};
+//export{};
 // Boilerplate
 const canvas: any = document.querySelector('.main-canvas') as HTMLCanvasElement;
 const ctx: any = canvas.getContext('2d');
@@ -12,16 +12,18 @@ function getRandomInt(num: number): any {
 function drawSquare(a: number, b: number, c: number, z: string) {
   ctx.fillStyle = z;
   ctx.fillRect(a, b, c, c);
+  //drawSquare(a + 50, b + 50, c, arrayOfColors[getRandomInt(26)]);
 }
+//drawSquare(0, 0, 50, arrayOfColors[getRandomInt(26)])
 
 function fractalSquares(i: number) {
 //top line
-  drawSquare(i / 3, i / 3, i / 3, arrayOfColors[getRandomInt(26)]);
-  drawSquare(i / 9, i / 9, i / 9, arrayOfColors[getRandomInt(26)]);
-  drawSquare( 4 * i / 9, i / 9, i / 9, arrayOfColors[getRandomInt(26)]);
+  drawSquare(1 * i / 3, i / 3, i / 3, arrayOfColors[getRandomInt(26)]);
+  drawSquare(1 * i / 9, i / 9, i / 9, arrayOfColors[getRandomInt(26)]);
+  drawSquare(4 * i / 9, i / 9, i / 9, arrayOfColors[getRandomInt(26)]);
 // middle line
-  drawSquare(7 * i / 9, i / 9, i / 9, arrayOfColors[getRandomInt(26)]);
-  drawSquare(i / 9, 4 * i / 9, i / 9, arrayOfColors[getRandomInt(26)]);
+  drawSquare(7 * i / 9, 1 * i / 9, i / 9, arrayOfColors[getRandomInt(26)]);
+  drawSquare(1 * i / 9, 4 * i / 9, i / 9, arrayOfColors[getRandomInt(26)]);
   drawSquare(7 * i / 9, 4 * i / 9, i / 9, arrayOfColors[getRandomInt(26)]);
 // bottom line
   drawSquare(1 * i / 9, 7 * i / 9, i / 9, arrayOfColors[getRandomInt(26)]);
@@ -29,13 +31,4 @@ function fractalSquares(i: number) {
   drawSquare(7 * i / 9, 7 * i / 9, i / 9, arrayOfColors[getRandomInt(26)]);
   fractalSquares(i / 3);
 }
-
-/*
-function fractalSquares(x: number, y: number, z: number) {
-  drawSquare(x + z / 3, y + z / 3, z / 3, arrayOfColors[getRandomInt(26)]);
-  fractalSquares(x, y, z / 3);
-}*/
-/*
-function fractalSquares()
-*/
 fractalSquares(600);
