@@ -7,16 +7,18 @@ function orderWeight(strng) {
   for (let i in array) { //creating a second array which contains the sumOfDigits, same index as array items
     sumOfDigits.push(array[i].split('').reduce((a, b) => parseInt(a) + parseInt(b)));
   }
-  let Weight = {};
-  for (let i in array) { //creating key:value pairs, sometimes there are more than of the same key, therefore I create arrays as values
+
+  let Weight = {}; //creating key:value pairs
+  for (let i in array) { //sometimes there are more than of the same key, therefore I've created arrays as values
     Weight.hasOwnProperty(sumOfDigits[i]) ? Weight[sumOfDigits[i]].push(parseInt(array[i]))
       : Weight[parseInt(sumOfDigits[i])] = [parseInt(array[i])];
+  }
     /*if (Weight.hasOwnProperty(sumOfDigits[i])) {
       Weight[sumOfDigits[i]].push(parseInt(array[i]));
     } else {
       Weight[parseInt(sumOfDigits[i])] = [parseInt(array[i])];
     }*/
-  }
+  
   for (let i = 0; i < Object.keys(Weight).length; i++) { //the value arrays need to be sorted in order to have correct solution
     Object.values(Weight)[i].sort();
   }
