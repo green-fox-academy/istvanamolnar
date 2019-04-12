@@ -72,11 +72,3 @@ function swapXtoY(str: string, i: number = str.length): any {
     return i === 0 ? str : swapXtoY(str.replace('x', 'y'), i - 1);
 }
 //console.log(swapXtoY('asdrwxdszwsifxxvewruxblfx'));
-
-//Define a recursive fibonacci(n) method that returns the nth fibonacci number, with n=0 representing the start of the sequence.
-function fibonacci(n: number): any {
-    if (n === 0) {
-
-    } 
-    
-}
