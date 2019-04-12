@@ -1,7 +1,7 @@
 'use strict';
 
 function orderWeight(strng) {
-  if (!strng) {return strng;}
+  if (!strng) { return strng; }
   let array = strng.split(' ');
   let sumOfDigits = []
   for (let i in array) { //creating a second array which contains the sumOfDigits, same index as array items
@@ -9,7 +9,8 @@ function orderWeight(strng) {
   }
   let Weight = {};
   for (let i in array) { //creating key:value pairs, sometimes there are more than of the same key, therefore I create arrays as values
-    Weight.hasOwnProperty(sumOfDigits[i]) ? Weight[sumOfDigits[i]].push(parseInt(array[i])) : Weight[parseInt(sumOfDigits[i])] = [parseInt(array[i])];
+    Weight.hasOwnProperty(sumOfDigits[i]) ? Weight[sumOfDigits[i]].push(parseInt(array[i]))
+      : Weight[parseInt(sumOfDigits[i])] = [parseInt(array[i])];
     /*if (Weight.hasOwnProperty(sumOfDigits[i])) {
       Weight[sumOfDigits[i]].push(parseInt(array[i]));
     } else {
