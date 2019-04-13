@@ -1,6 +1,11 @@
 'use strict';
 
 function anagrams(word, words) {
+  let solution = words.filter(x => x.split('').sort().join('') === word.split('').sort().join(''));
+  return solution;
+}
+
+/* function anagrams(word, words) {
   let solution = [];
   let sorted = words.map(x => x.split('').sort().join('')); //sort each letters of each word in 'words' to alphabetic order
   word = word.split('').sort().join(''); // sort 'word' to alphabetic order too  => easy to find the match in the array
@@ -8,7 +13,7 @@ function anagrams(word, words) {
     sorted[i] === word ? solution.push(words[i]) : false;
   }
   return solution;
-}
+} */
 
 // TASK: 
 // Write a function that will find all the anagrams of a word from a list. 
