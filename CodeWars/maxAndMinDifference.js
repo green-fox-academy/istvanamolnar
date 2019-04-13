@@ -1,11 +1,11 @@
 'use strict';
 
 function maxAndMin(arr1,arr2){
-  let min = 10E6;
+  let min = 10E6; // I defined a large avlue for min
   let max = 0;
   for (let i in arr1) {
     for (let j in arr2) {
-      let cache = arr1[i] - arr2[j] < 0 ? (arr1[i] - arr2[j]) * (-1) : arr1[i] - arr2[j];
+      let cache = arr1[i] - arr2[j] < 0 ? (arr1[i] - arr2[j]) * (-1) : arr1[i] - arr2[j]; // we are looking for absolute value
       min = cache < min ? cache : min; 
       max = cache > max ? cache : max;
     }
@@ -24,3 +24,4 @@ function maxAndMin(arr1,arr2){
 // maxAndMin([3],[20]) // => [17,17]
 // maxAndMin([3,10,5],[3,10,5]) // => [7,0]
 // maxAndMin([1,2,3,4,5],[6,7,8,9,10]) // => [9,1]
+

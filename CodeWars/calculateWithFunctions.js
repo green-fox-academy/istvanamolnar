@@ -1,4 +1,5 @@
 'use strict';
+
 function zero(number) {
   return !number ? 0 : number[0] === "+" ? number[1] + 0 : number[0] === "-" ? 0 - number[1] : number[0] === "*" ? number[1] * 0 : Math.floor(0 / number[1]);
 };
@@ -30,13 +31,14 @@ function nine(number) {
   return !number ? 9 : number[0] === "+" ? number[1] + 9 : number[0] === "-" ? 9 - number[1] : number[0] === "*" ? number[1] * 9 : Math.floor(9 / number[1]);
 };
 
-function plus(num) {return ["+", num]};
-function minus(num) {return ["-", num]};
-function times(num) {return ["*", num]};
-function dividedBy(num) {return ["/", num]};
+function plus(num) { return ["+", num] };
+function minus(num) { return ["-", num] };
+function times(num) { return ["*", num] };
+function dividedBy(num) { return ["/", num] };
 
 // TASK:
-//seven(times(five())); // must return 35
-//four(plus(nine())); // must return 13
-//eight(minus(three())); // must return 5
-//six(dividedBy(two())); // must return 3
+// seven(times(five())); // must return 35
+// four(plus(nine())); // must return 13
+// eight(minus(three())); // must return 5
+// six(dividedBy(two())); // must return 3
+
