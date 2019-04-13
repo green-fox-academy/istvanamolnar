@@ -1,8 +1,7 @@
 'use strict';
 
 function anagrams(word, words) {
-  let solution = words.filter(x => x.split('').sort().join('') === word.split('').sort().join(''));
-  return solution;
+  return words.filter(x => x.split('').sort().join('') === word.split('').sort().join(''));
 }
 
 /* function anagrams(word, words) {
