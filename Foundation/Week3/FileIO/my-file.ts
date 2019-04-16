@@ -1,5 +1,5 @@
 'use strict';
-
+export{};
 const fs: any = require('fs');
 
 // Write a program that opens a file called "my-file.txt", then prints
@@ -11,7 +11,6 @@ const fs: any = require('fs');
 
 let fileContent: any = fs.readFileSync('my-file.txt', 'utf-8');
 console.log(fileContent);
-
 
 // Write a function that is able to manipulate a file
 // By writing your name into it as a single line
@@ -40,3 +39,4 @@ function countLines(file: any) {
   return fileContent2.split('\n').length;
 }
 console.log(countLines('my-file.txt'));
+
