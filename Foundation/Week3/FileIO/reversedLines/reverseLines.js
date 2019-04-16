@@ -3,8 +3,8 @@
 const fs = require('fs');
 
 // Create a method that decrypts reversedLines.txt
-function reverseLines(file) {
-  const fileContent = fs.readFileSync(file, 'utf-8').split('\n');
+function reverseLines(fileFrom, fileTo) {
+  const fileContent = fs.readFileSync(fileFrom, 'utf-8').split('\n');
   let solution = '';
   for (let i in fileContent) {
     for (let j = fileContent[i].length - 1; j >= 0; j--) {
@@ -12,7 +12,7 @@ function reverseLines(file) {
     }
     solution += '\n';
   }
-  return solution;
+  fs.writeFileSync(fileTo, solution);
 }
 
-console.log(reverseLines('reversedLines.txt'));
+console.log(reverseLines('reverseLines.txt', 'reversedLines.txt'));
