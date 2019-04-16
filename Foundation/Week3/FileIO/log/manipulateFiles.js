@@ -17,7 +17,8 @@ function copyContent(fileFrom, fileTo) {
 // Write a function that returns the GET / POST request ratio.
 
 function getIP(file) {
-  return fs.readFileSync(file, 'utf-8').split('\n').map(x => x.substr(27, 11));
+  const ip = fs.readFileSync(file, 'utf-8').split('\n').map(x => x.substr(27, 11));
+  return ip.filter((a, b) => ip.indexOf(a) === b);
 }
 
 function getPostRatio(file) {
@@ -26,6 +27,5 @@ function getPostRatio(file) {
   fs.readFileSync(file, 'utf-8').split('\n').map(x => x[41] === 'P' ? post++ : get++);
   return `${get}:${post}`;
 }
-//console.log(getIP('log.txt'));
+console.log(getIP('log.txt'));
 //console.log(getPostRatio('log.txt'));
-
