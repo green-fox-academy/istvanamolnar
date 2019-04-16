@@ -16,10 +16,12 @@ function copyContent(fileFrom, fileTo) {
 // Write a function that returns an array with the unique IP adresses.
 // Write a function that returns the GET / POST request ratio.
 
-function getIP(file) {
-  const ip = fs.readFileSync(file, 'utf-8').split('\n').map(x => x.substr(27, 11));
-  return ip.filter((a, b) => ip.indexOf(a) === b);
+function getIP(fileFrom, fileTo) {
+  const ip = fs.readFileSync(fileFrom, 'utf-8').split('\n').map(x => x.substr(27, 11));
+  const unique = ip.filter((a, b) => ip.indexOf(a) === b).sort().join('\n');
+  fs.writeFileSync(fileTo, unique);
 }
+getIP('log.txt', 'uniqueIP.txt');
 
 function getPostRatio(file) {
   let get = 0;
@@ -27,5 +29,4 @@ function getPostRatio(file) {
   fs.readFileSync(file, 'utf-8').split('\n').map(x => x[41] === 'P' ? post++ : get++);
   return `${get}:${post}`;
 }
-console.log(getIP('log.txt'));
-//console.log(getPostRatio('log.txt'));
+console.log(getPostRatio('log.txt'));
