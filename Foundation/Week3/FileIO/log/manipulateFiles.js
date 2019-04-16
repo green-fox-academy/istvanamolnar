@@ -29,4 +29,3 @@ function getPostRatio(file) {
 //console.log(getIP('log.txt'));
 //console.log(getPostRatio('log.txt'));
 
-
