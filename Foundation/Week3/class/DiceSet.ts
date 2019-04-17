@@ -41,20 +41,20 @@ class DiceSet {
 
 let diceSet = new DiceSet();
 console.log(diceSet.roll());
-console.log(diceSet.getCurrent());
+// console.log(diceSet.getCurrent());
 
-console.log("------------------");
+// console.log("------------------");
 
-diceSet.reroll();
-console.log(diceSet.getCurrent());
+// diceSet.reroll();
+// console.log(diceSet.getCurrent());
 
-console.log("------------------");
+// console.log("------------------");
 
-console.log(diceSet.getCurrent(5));
-diceSet.reroll();
-console.log(diceSet.getCurrent());
+// console.log(diceSet.getCurrent(5));
+// diceSet.reroll();
+// console.log(diceSet.getCurrent());
 
-console.log("------------------");
+// console.log("------------------");
 
-diceSet.reroll(4);
-console.log(diceSet.getCurrent());
+// diceSet.reroll(4);
+// console.log(diceSet.getCurrent());
