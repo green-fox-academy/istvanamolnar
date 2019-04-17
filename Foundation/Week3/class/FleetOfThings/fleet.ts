@@ -15,6 +15,10 @@ class Fleet {
   getThings(): Thing[] {
     return this.things;
   }
+
+  print(): any {
+    this.getThings().forEach(x => console.log(`[${x.getCompleted() ? 'X' : ' '}] ${x.getName()}`));
+  }
 }
 
 export { Fleet };

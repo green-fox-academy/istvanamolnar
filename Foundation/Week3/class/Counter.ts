@@ -1,6 +1,5 @@
 'use strict';
 
-
 // Create a Counter class
 // which has an integer property
 // when creating it should have a default value 0 or we can specify it when creating
