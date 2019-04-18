@@ -8,14 +8,14 @@ class Student {
   learn(): any {
     return this.learn();
   }
-  question(): any {
-    Teacher.answer();
+  question(x: Teacher): any {
+    x.answer();
   }
 }
 
 class Teacher {
-  teach(): any {
-    Student.learn();
+  teach(y: Student): any {
+    y.learn();
   }
   answer(): any {
     return this.answer();
