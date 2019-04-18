@@ -31,3 +31,26 @@ console.log(BrandNew);
 
 BrandNew.color = 'white';
 console.log(BrandNew);
+
+
+// Sharpie Set
+//   Reuse your Sharpie class
+//   Create SharpieSet class
+//   it contains a list of Sharpie
+//   countUsable() -> sharpie is usable if it has ink in it
+//   removeTrash() -> removes all unusable sharpies
+
+class SharpieSet {
+  list: Sharpie [] = [];
+
+  countUsable(): number {
+    let counter: number = 0;
+    this.list.forEach(x => x.inkAmount >= 10 ? counter++ : false);
+    return counter;
+    //if (x.inkAmount > 0) { this.list.push(x) };
+  }
+
+  removeTrash(): void {
+    this.list.filter(x => x.inkAmount >= 0); // { this.list.splice(this.list.indexOf(x), 1) };
+  }
+}
