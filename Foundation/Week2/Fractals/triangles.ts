@@ -1,5 +1,5 @@
 'use strict';
-export{};
+// export{};
 // Boilerplate
 const canvas: any = document.querySelector('.main-canvas') as HTMLCanvasElement;
 const ctx: any = canvas.getContext('2d');
@@ -25,4 +25,3 @@ function drawTriangle(x: number, y: number, z: number) {
 }
 
 drawTriangle(0, 0, 600);
-

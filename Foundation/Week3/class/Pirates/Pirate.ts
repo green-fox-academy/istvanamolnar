@@ -1,23 +1,23 @@
 'use strict';
 
-class Pirate {
+export class Pirate {
   name: string;
-  numOfLegs: number;
   origin: string;
   isDrunk: boolean;
   isDead: boolean = false;
-  shotsOfRum: number = 3;
+  shotsOfRum: number = Math.floor(Math.random() * Math.floor(15));
+  isCaptain: boolean;
   
-  constructor(name: string, numOfLegs: number, origin: string, isDrunk: boolean) {
+  constructor(name: string, origin: string, isDrunk: boolean = false, isCaptain: boolean = false) {
     this.name = name;
-    this.numOfLegs = numOfLegs;
     this.origin = origin;
-    this.isDrunk = isDrunk;
+    this.isDrunk = this.shotsOfRum > 6;
+    this.isCaptain = isCaptain;
   }
 
   drinkSomeRum(num: number): void {
     this.shotsOfRum += num;
-    this.isDrunk = this.shotsOfRum > 5;
+    this.isDrunk = this.shotsOfRum > 6;
     this.isDead = this.shotsOfRum > 20;
   }
 
@@ -30,9 +30,9 @@ class Pirate {
   }
 }
 
-const FirstPirate: Pirate = new Pirate('Bob', 1, 'Cuba', false);
-console.log(FirstPirate);
-FirstPirate.drinkSomeRum(3);
-console.log(FirstPirate);
-FirstPirate.kill();
-console.log(FirstPirate);
+// const FirstPirate: Pirate = new Pirate('Bob', 1, 'Cuba', false, true);
+// console.log(FirstPirate);
+// FirstPirate.drinkSomeRum(3);
+// console.log(FirstPirate);
+// FirstPirate.kill();
+// console.log(FirstPirate);
