@@ -21,7 +21,7 @@ export class Garden {
 
   statusOfGarden(): void {
     for (let i in this.plants) {
-      console.log(`The ${this.plants[i].color} ${this.plants[i]} ${this.plants[i].needsWater ? 'needs' : 'doesnt need'} water`);
+      console.log(`The ${this.plants[i].color} ${this.plants[i].constructor.name} ${this.plants[i].needsWater ? 'needs' : 'doesnt need'} water`);
     }
   }
 
