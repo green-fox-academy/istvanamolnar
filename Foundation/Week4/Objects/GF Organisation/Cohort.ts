@@ -18,7 +18,7 @@ export class Cohort {
     this.students.push(Student);
   }
 
-  addMentor(Mentor: Mentor) {
+  addMentor(Mentor: Mentor): void {
     this.mentors.push(Mentor);
   }
 
