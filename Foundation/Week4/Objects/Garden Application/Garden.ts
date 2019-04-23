@@ -1,6 +1,6 @@
 'use strict';
-import {Tree} from './Tree';
-import {Flower} from './Flower';
+import { Tree } from './Tree';
+import { Flower } from './Flower';
 
 export class Garden {
   plants: Tree[] & Flower[];
@@ -15,13 +15,13 @@ export class Garden {
 
   watering(amountOfWater: number): void {
     console.log(`Watering with ${amountOfWater}`);
-    this.plants.forEach(x => x.needsWater ? x.addWater(amountOfWater / this.plants.length) : false);
+    this.plants.forEach(plant => plant.needsWater ? plant.addWater(amountOfWater / this.plants.length) : false);
     this.statusOfGarden();
   }
 
   statusOfGarden(): void {
-    for (let i in this.plants) {
-      console.log(`The ${this.plants[i].color} ${this.plants[i].constructor.name} ${this.plants[i].needsWater ? 'needs' : 'doesnt need'} water`);
+    for (let item in this.plants) {
+      console.log(`The ${this.plants[item].color} ${this.plants[item].constructor.name} ${this.plants[item].needsWater ? 'needs' : 'doesnt need'} water`);
     }
   }
 

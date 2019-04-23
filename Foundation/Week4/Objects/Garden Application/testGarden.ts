@@ -6,10 +6,10 @@ import {Flower} from './Flower';
 
 let myGarden = new Garden()
 
-myGarden.addPlant(new Flower('lohere'));
-myGarden.addPlant(new Flower('utifu'));
-myGarden.addPlant(new Tree('akac'));
-myGarden.addPlant(new Tree('fuz'));
+myGarden.addPlant(new Flower('sarga'));
+myGarden.addPlant(new Flower('piros'));
+myGarden.addPlant(new Tree('feher'));
+myGarden.addPlant(new Tree('zold'));
 
 console.log(myGarden);
 
