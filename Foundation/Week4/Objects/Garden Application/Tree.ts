@@ -11,4 +11,8 @@ export class Tree {
     this.needsWater = this.waterAmount < 10;
   }
 
+  addWater(amount: number): void {
+    this.waterAmount += 0.4 * amount;
+    this.needsWater = this.waterAmount < 10;
+  }
 }

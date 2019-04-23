@@ -11,7 +11,10 @@ export class Flower {
     this.needsWater = this.waterAmount < 5;
   }
 
-  
+  addWater(amount: number): void {
+    this.waterAmount += 0.75 * amount;
+    this.needsWater = this.waterAmount < 5;
+  }
 }
 
 
