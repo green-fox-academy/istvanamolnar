@@ -2,7 +2,7 @@
 
 import { Person } from './Person'
 
-class Sponsor extends Person {
+export class Sponsor extends Person {
   company: string;
   hiredStudents: number;
 
@@ -12,8 +12,8 @@ class Sponsor extends Person {
     this.hiredStudents = 0;
   }
 
-  introduce(): string {
-    return `Hi, I'm ${this.name}, a ${this.age} year old ${this.gender} who represents ${this.company} and hired ${this.hiredStudents} students so far.`
+  introduce(): void {
+    console.log(`Hi, I'm ${this.name}, a ${this.age} year old ${this.gender} who represents ${this.company} and hired ${this.hiredStudents} students so far.`);
   }
 
   hire(): void {

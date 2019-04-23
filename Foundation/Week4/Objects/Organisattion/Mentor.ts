@@ -13,8 +13,8 @@ export class Mentor extends Person {
     console.log('My goal is: Educate brilliant junior software developers.')
   }
 
-  introduce(): string {
-    return `Hi, I'm ${this.name}, a ${this.age} year old ${this.gender} ${this.level} mentor.`
+  introduce(): void {
+    console.log(`Hi, I'm ${this.name}, a ${this.age} year old ${this.gender} ${this.level} mentor.`);
   }
 }
 
