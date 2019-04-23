@@ -6,10 +6,10 @@ class Sponsor extends Person {
   company: string;
   hiredStudents: number;
 
-  constructor(name: string, age: number, gender: string, company: string = 'Google', hiredStudents: number = 0) {
+  constructor(name?: string, age?: number, gender?: string, company: string = 'Google') {
     super(name, age, gender)
     this.company = company;
-    this.hiredStudents = hiredStudents;
+    this.hiredStudents = 0;
   }
 
   introduce(): string {
@@ -20,7 +20,10 @@ class Sponsor extends Person {
     this.hiredStudents++;
   }
 
-  getGoal(): string {
-    return 'Hire brilliant junior software developers.'
+  getGoal(): void {
+    console.log('Hire brilliant junior software developers.');
   }
 }
+
+/* const janika = new Sponsor();
+janika.getGoal(); */

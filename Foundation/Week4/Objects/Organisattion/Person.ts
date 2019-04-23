@@ -5,7 +5,7 @@ export class Person {
   age: number;
   gender: string;
 
-  constructor(name: string = 'Jane Doe', age: number = 30, gender: string = 'Female') {
+  constructor(name: string = 'Jane Doe', age: number = 30, gender: string = 'female') {
     this.name = name;
     this.age = age;
     this.gender = gender;
@@ -15,9 +15,10 @@ export class Person {
     return `Hi, I'm ${this.name}, a ${this.age} years old ${this.gender}.`
   }
 
-  getGoal(): string {
-    return 'My goal is: Live for the moment!'
+  getGoal(): void {
+    console.log('My goal is: Live for the moment!');
   }
 }
 
-//const jozsika: Person = new Person('jozsi', 89, 'shemale');
+/* const jozsika: Person = new Person();
+console.log(jozsika); */

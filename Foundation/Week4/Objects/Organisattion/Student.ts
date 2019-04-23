@@ -6,14 +6,14 @@ class Student extends Person {
   previousOrganization: string;
   skippedDays: number;
 
-  constructor(name: string, age: number, gender: string, previousOrganization: string = 'The School of Life', skippedDays: number = 0) {
+  constructor(name?: string, age?: number, gender?: string, previousOrganization: string = 'The School of Life', skippedDays: number = 0) {
     super(name, age, gender);
     this.previousOrganization = previousOrganization;
     this.skippedDays = skippedDays;
   }
 
-  getGoal(): string {
-    return 'My goal is: Be a junior software developer.'
+  getGoal(): void {
+    console.log('My goal is: Be a junior software developer.');
   }
 
   introduce(): string {
@@ -24,5 +24,5 @@ class Student extends Person {
   }
 }
 
-let zoltan = new Student('zolcsi', 15, 'male');
-console.log(zoltan);
+/* let zoltan = new Student();
+console.log(zoltan);  */
