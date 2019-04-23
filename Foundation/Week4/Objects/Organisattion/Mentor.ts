@@ -2,8 +2,9 @@
 
 import { Person } from './Person';
 
-class Mentor extends Person {
+export class Mentor extends Person {
   level: string;
+
   constructor(name?: string, age?: number, gender?: string, level: string = 'Intermediate') {
     super(name, age, gender);
     this.level = level;
