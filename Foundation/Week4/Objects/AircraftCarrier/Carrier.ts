@@ -2,7 +2,7 @@
 
 import { Aircraft } from './Aircraft';
 
-class Carrier {
+export class Carrier {
   aircrafts: Aircraft[] = [];
   ammoStorage: number;
   healthPoint: number;
@@ -12,26 +12,27 @@ class Carrier {
     this.healthPoint = healthPoint;
   }
 
-  add(aircraft: Aircraft): void {
-    this.aircrafts.push(aircraft);
+  add(x: number, y: number): void {
+    this.aircrafts.push(new Aircraft(x, y));
   }
 
   fill(ammo: number) {
-    this.aircrafts.forEach(aircraft => aircraft.isPriority && this.ammoStorage > ammo ? this.ammoStorage -= aircraft.refill(ammo) : false);
+    this.aircrafts.forEach(aircraft => this.ammoStorage -= aircraft.refill(ammo));
   }
 
   fight(carrier: Carrier): any {
     this.aircrafts.forEach(aircraft => carrier.healthPoint -= aircraft.fight());
-    console.log(carrier.healthPoint);
+    console.log(carrier.healthPoint ? `Your HP is ${carrier.healthPoint}` : `You are dead`);
   }
 
-  totalDamage(): void {
+  totalDamage(): number {
     let totalDamage = 0;
     this.aircrafts.forEach(aircraft => totalDamage += aircraft.damage * aircraft.currentAmmo);
+    return totalDamage;
   }
 
-  getStatus(carrier: Carrier) {
-    console.log(`HP: ${this.healthPoint}, Aircraft count: ${this.aircrafts.length}, Ammo Storage: ${this.ammoStorage}, Total damage: ${this.totalDamage}. \n Aircrafts: ${this.aircrafts}`)
+  getStatus() {
+    console.log(`HP: ${this.healthPoint}, Aircraft count: ${this.aircrafts.length}, Ammo Storage: ${this.ammoStorage}, Total damage: ${this.totalDamage()}. \n Aircrafts: ${this.aircrafts}`)
   }
 
 }

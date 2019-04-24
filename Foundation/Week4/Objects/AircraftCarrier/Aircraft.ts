@@ -22,7 +22,7 @@ export class Aircraft {
   refill(num: number): number {
     let ammoRequired: number = this.maxAmmo - this.currentAmmo;
     this.currentAmmo += ammoRequired;
-    return num > ammoRequired ? num - ammoRequired : 0;
+    return num > ammoRequired ? num = num - ammoRequired : num = 0;
   }
 
   getType(aircraft: Aircraft): any {
@@ -37,8 +37,8 @@ export class Aircraft {
     return this.priority = (aircraft.currentAmmo < 4);
   }
 }
-
+/*
 let F16: Aircraft = new Aircraft(8, 30);
 let F35: Aircraft = new Aircraft(12, 50);
 
-console.log(F16.isPriority(F16) + '\n' + F35.getType(F35));
+console.log(F16.isPriority(F16) + '\n' + F35.getType(F35)); */

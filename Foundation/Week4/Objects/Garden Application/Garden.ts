@@ -15,8 +15,8 @@ export class Garden {
 
   watering(amountOfWater: number): void {
     console.log(`Watering with ${amountOfWater}`);
-    let counter: number = this.plants.filter(plant => plant.needsWater).length;
-    this.plants.forEach(plant => plant.needsWater ? plant.addWater(amountOfWater / counter) : false);
+    let counter: number = this.plants.filter((plant: Tree | Flower) => plant.needsWater).length || 1;
+    this.plants.forEach((plant: Tree | Flower) => plant.needsWater ? plant.addWater(amountOfWater / counter) : false);
     this.statusOfGarden();
   }
 
