@@ -7,18 +7,17 @@ function getSecretArray(): number[] { //generates the array of the secret number
     let randomIndex: number = Math.floor(Math.random() * 10 - i);
     randomIndex = randomIndex >= 0 ? randomIndex : -randomIndex;
     cabArray.push(arrayOfNumbers[randomIndex]);
-    arrayOfNumbers.splice(arrayOfNumbers.indexOf(cabArray[i]), 1);    
+    arrayOfNumbers.splice(arrayOfNumbers.indexOf(cabArray[i]), 1);
   }
   return cabArray;
 }
 function guesser(): number[] { //takes and prints guesses
   let readlineSync = require('readline-sync');
-  let guess: number[] = readlineSync.question('Enter four single digit integers: ').split('').map((x:string) => parseInt(x));
+  let guess: number[] = readlineSync.question('Enter four different, single digit integers: ').split('').map((x: string) => parseInt(x));
   return guess;
 }
-function cattleCounter(secret: number[]): any {
+function cattleCounter(secret: number[]): any { //main function, compares guesses with the secret numbers
   const guess: number[] = guesser();
-  prevGuess += guess + '\n';
   let Cattle: any = {
     'bull': 0,
     'cow': 0
@@ -32,11 +31,14 @@ function cattleCounter(secret: number[]): any {
       }
     }
   }
-  console.log(`${prevGuess}   Bulls: ${Cattle.bull}, Cows: ${Cattle.cow}`)
-  return Cattle.bull === 4 ? console.log('GG WP') : cattleCounter(secret);
+  roundCounter++
+  prevGuess += `=> ${guess.join(' ')} <= | Bulls: ${Cattle.bull}, Cows: ${Cattle.cow} |\n`;
+  console.log(prevGuess);
+  return Cattle.bull === 4 ? console.log(`You\'ve won in ${roundCounter} rounds. GG WP CU later!`) : cattleCounter(secret);
 }
 
 const secret: number[] = getSecretArray();
-console.log(secret);
+//console.log(secret);
 let prevGuess: string = '';
+let roundCounter: number = 0;
 cattleCounter(secret);
