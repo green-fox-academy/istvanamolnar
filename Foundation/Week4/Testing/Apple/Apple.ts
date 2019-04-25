@@ -31,6 +31,3 @@ export class Apple {
     return list[index];
   }
 }
-
-let Red = new Apple();
-console.log(Red.findFibonacci(1000));
