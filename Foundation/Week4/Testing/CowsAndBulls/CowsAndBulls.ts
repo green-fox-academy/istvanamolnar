@@ -11,5 +11,25 @@ function randomArray(): number[] { //generates the array of the secret numbers
   }
   return cabArray;
 }
+const secret: number[] = randomArray();
+let guess:  number[] = [1, 2, 3, 4];
 
-console.log(randomArray());
+
+function guessNumber(guess: number[]): void {
+  let Cattle: any = {
+    'bull': 0,
+    'cow': 0
+  }
+  for (let i in secret) {
+    for (let j in guess) {
+      if (secret[i] === guess[j] && i === j) {
+        Cattle.bull++;
+      } else if (i != j && secret[i] === guess[j]) {
+        Cattle.cow++;
+      }
+    }
+  }
+  console.log(secret, guess, Cattle);
+}
+
+guessNumber(guess);
