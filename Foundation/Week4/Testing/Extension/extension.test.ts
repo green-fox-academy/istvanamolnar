@@ -24,7 +24,7 @@ test('max of three: third', function (t: any): any {
 });
 
 test('median: four', function (t: any): any {
-  t.equal(median([7, 5, 3, 5]), 5);
+  t.equal(median([7, 5, 3, 5, 1]), 5);
   t.end();
 });
 
