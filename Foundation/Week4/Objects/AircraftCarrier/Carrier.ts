@@ -43,6 +43,6 @@ export class Carrier {
   }
 
   getStatus(): string {
-    return `HP: ${this.hp}, Aircraft count: ${this.aircrafts.length}, Ammo storage: ${this.ammoStorage}, Total damage: ${this.getTotalDamage()}\nAircrafts:\n${this.aircrafts.map((x: Aircraft) => x.status()).join('\n')}`;
+    return this.hp ? `HP: ${this.hp}, Aircraft count: ${this.aircrafts.length}, Ammo storage: ${this.ammoStorage}, Total damage: ${this.getTotalDamage()}\nAircrafts:\n${this.aircrafts.map((x: Aircraft) => x.status()).join('\n')}` : `Ìt's dead Jim :(`;
   }
 }
