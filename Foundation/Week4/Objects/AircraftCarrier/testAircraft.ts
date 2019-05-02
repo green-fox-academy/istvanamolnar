@@ -1,23 +1,27 @@
 'use strict';
 
-import { Aircraft } from './Aircraft';
 import { Carrier } from './Carrier';
 
-let Carrier1 = new Carrier(1000, 1000);
-let Carrier2 = new Carrier(900, 900);
+let first = new Carrier(100, 2500);
+let second = new Carrier(50, 2500);
 
-Carrier1.add(8, 30);
-Carrier1.add(12, 20);
-Carrier1.add(20, 10);
-Carrier1.add(10, 25);
+first.add('F16');
+first.add('F16');
+first.add('F16');
+first.add('F35');
+first.add('F35');
 
-Carrier2.add(15, 20);
-Carrier2.add(10, 40);
-Carrier2.add(8, 50);
+second.add('F16');
+second.add('F16');
+second.add('F35');
+second.add('F35');
+second.add('F35');
 
-console.log(Carrier1, Carrier2);
+first.fill();
+second.fill();
 
-Carrier1.fill(5);
-Carrier2.fill(5);
+first.fight(second);
+first.fill();
+console.log(first, second);
 
-Carrier1.getStatus();
+console.log(first.getStatus());

@@ -3,36 +3,46 @@
 import { Aircraft } from './Aircraft';
 
 export class Carrier {
-  aircrafts: Aircraft[] = [];
   ammoStorage: number;
-  healthPoint: number;
+  hp: number;
+  aircrafts: Aircraft[] = [];
 
-  constructor(ammoStorage: number, healthPoint: number) {
+  constructor(ammoStorage: number, hp: number) {
     this.ammoStorage = ammoStorage;
-    this.healthPoint = healthPoint;
+    this.hp = hp;
   }
 
-  add(x: number, y: number): void {
-    this.aircrafts.push(new Aircraft(x, y));
+  add(type: string): void {
+    this.aircrafts.push(new Aircraft(type));
   }
 
-  fill(ammo: number) {
-    this.aircrafts.forEach(aircraft => this.ammoStorage -= aircraft.refill(ammo));
+  fill(): void {
+    let ammoNeeded = 0;
+    this.aircrafts.forEach((a: Aircraft) => ammoNeeded += (a.maxAmmo - a.currentAmmo));
+    if (ammoNeeded < this.ammoStorage) {
+      this.aircrafts.forEach((a: Aircraft) => a.refill(this.ammoStorage));
+      this.ammoStorage -= ammoNeeded;
+    } else {
+      this.aircrafts.forEach((a: Aircraft) => a.hasPriority ? this.ammoStorage = a.refill(this.ammoStorage) : false);
+      this.aircrafts.forEach((a: Aircraft) => a.hasPriority ? false : this.ammoStorage = a.refill(this.ammoStorage));
+      this.ammoStorage = 0;
+    }
   }
 
-  fight(carrier: Carrier): any {
-    this.aircrafts.forEach(aircraft => carrier.healthPoint -= aircraft.fight());
-    console.log(carrier.healthPoint ? `Your HP is ${carrier.healthPoint}` : `You are dead`);
+  fight(another: Carrier): void {
+    let thisDamage: number = 0
+    this.aircrafts.forEach((x: Aircraft) => thisDamage += (x.currentAmmo * x.baseDamage));
+    this.aircrafts.forEach((x: Aircraft) => x.currentAmmo = 0);
+    another.hp -= thisDamage;
   }
 
-  totalDamage(): number {
-    let totalDamage = 0;
-    this.aircrafts.forEach(aircraft => totalDamage += aircraft.damage * aircraft.currentAmmo);
+  getTotalDamage(): number {
+    let totalDamage: number = 0
+    this.aircrafts.forEach((x: Aircraft) => totalDamage += (x.currentAmmo * x.baseDamage));
     return totalDamage;
   }
 
-  getStatus() {
-    console.log(`HP: ${this.healthPoint}, Aircraft count: ${this.aircrafts.length}, Ammo Storage: ${this.ammoStorage}, Total damage: ${this.totalDamage()}. \n Aircrafts: ${this.aircrafts}`)
+  getStatus(): string {
+    return `HP: ${this.hp}, Aircraft count: ${this.aircrafts.length}, Ammo storage: ${this.ammoStorage}, Total damage: ${this.getTotalDamage()}\nAircrafts:\n${this.aircrafts.map((x: Aircraft) => x.status()).join('\n')}`;
   }
-
 }

@@ -1,44 +1,47 @@
 'use strict';
 
 export class Aircraft {
-  currentAmmo: number;
+  type: string;
   maxAmmo: number;
-  damage: number;
-  priority: boolean;
+  currentAmmo: number;
+  baseDamage: number;
+  hasPriority: boolean;
 
-  constructor(maxAmmo: number, damage: number, ammo: number = 0, priority: boolean = false) {
-    this.maxAmmo = maxAmmo;
-    this.damage = damage;
-    this.currentAmmo = ammo;
-    this.priority = priority;
+  constructor(type: string, maxAmmo?: number, baseDamage?: number, hasPriority?: boolean, currentAmmo: number = 0) {
+    this.type = type;
+    this.baseDamage = this.type === 'F16' ? 30 : 50;
+    this.maxAmmo = this.type === 'F16' ? 8 : 12;
+    this.currentAmmo = currentAmmo;
+    this.hasPriority = this.type === 'F35';
   }
 
   fight(): number {
-    let damageDealt = this.currentAmmo * this.damage;
+    let damageDealt: number = this.currentAmmo * this.baseDamage;
     this.currentAmmo = 0;
     return damageDealt;
   }
 
   refill(num: number): number {
     let ammoRequired: number = this.maxAmmo - this.currentAmmo;
-    this.currentAmmo += ammoRequired;
-    return num > ammoRequired ? num = num - ammoRequired : num = 0;
+    if (num >= ammoRequired) {
+      this.currentAmmo = this.maxAmmo;
+      num -= ammoRequired;
+    } else {
+      this.currentAmmo = num;
+      num = 0
+    }
+    return num;
   }
 
-  getType(aircraft: Aircraft): any {
-    return aircraft.constructor.name;
-  } 
-
-  getStatus(aircraft: Aircraft): any {
-    console.log(`Type ${this.getType(aircraft)}, Ammo: ${this.currentAmmo}, Base Damage: ${this.damage}, All Damage: ${this.fight()}`)
+  getType(): string {
+    return this.type; 
   }
 
-  isPriority(aircraft: Aircraft): boolean {
-    return this.priority = (aircraft.currentAmmo < 4);
+  status(): string {
+    return `Type: ${this.getType()}, Ammo: ${this.currentAmmo}, Base Damage: ${this.baseDamage}, All Damage: ${this.maxAmmo * this.baseDamage}, Priority: ${this.isPriority()}`;
+  }
+
+  isPriority(): boolean {
+    return this.hasPriority;
   }
 }
-/*
-let F16: Aircraft = new Aircraft(8, 30);
-let F35: Aircraft = new Aircraft(12, 50);
-
-console.log(F16.isPriority(F16) + '\n' + F35.getType(F35)); */
