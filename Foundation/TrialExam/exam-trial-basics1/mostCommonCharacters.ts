@@ -19,7 +19,7 @@ function findMostCommonChars(filename: string): object {
   arrayOfChars.sort((a: number[], b: number[]) => b[1] - a[1]);
 
   // add two most common chars to the object
-  let ObjOfTwoTopChars: object = {};
+  let ObjOfTwoTopChars: any = {};
   for (let i: number = 0; i < 2; i++) {
     ObjOfTwoTopChars[arrayOfChars[i][0]] = arrayOfChars[i][1];
   }

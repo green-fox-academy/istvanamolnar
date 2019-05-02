@@ -1,5 +1,5 @@
 'use strict';
-
+export{}
 const fs: any = require('fs');
 
 let array: string[] = ['fuck', 'bloody', 'cock', 'shit', 'fucker', 'fuckstick', 'asshole', 'dick', 'piss', 'cunt'];
@@ -17,5 +17,4 @@ function countSwearwords(array: string[], filename: string): any {
   fs.writeFileSync('censored.txt', censored);
   return swearWords.length;
 }
-
 console.log(countSwearwords(array, "content.txt"));

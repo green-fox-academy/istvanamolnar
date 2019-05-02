@@ -1,5 +1,5 @@
 'use strict';
-
+export{};
 const fs: any = require('fs');
 
 // Write a program that opens a file called "my-file.txt", then prints

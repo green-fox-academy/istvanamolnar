@@ -6,13 +6,15 @@ const fs = require('fs');
 // We have provided you some example files (draw.txt, win-x.txt, win-o.txt)
 // Return "X", "O" or "Draw" based on the input file
 function ticTacResult(file) {
-  const fileContent = fs.readFileSync(file, 'utf-8').split('\n');
-  return fileContent[0] === 'OXO' ? 'O' : fileContent[0] === 'XOO' ? 'X' : 'Draw';
+  const fileContent = fs.readFileSync(file, 'utf-8').split('\n').map(x => x.split('')).filter(x => x.length);
+  let reverse = fileContent.map(x => x.map(y => y === 'X' ? 'O' : 'X'));
+  console.log(reverse);
+  
 }
 
-console.log(ticTacResult('win-o.txt'))
+ticTacResult('win-o.txt');
 // Should print "O"
-console.log(ticTacResult('win-x.txt'))
+//console.log(ticTacResult('win-x.txt'))
 // Should print "X"
-console.log(ticTacResult('draw.txt'))
+//console.log(ticTacResult('draw.txt'))
 // Should print "Draw"
