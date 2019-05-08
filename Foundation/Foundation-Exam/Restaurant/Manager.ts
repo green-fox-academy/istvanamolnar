@@ -7,8 +7,10 @@ export class Manager extends Employee {
   experience: number;
   moodLevel: number
 
-  constructor(name: string, experice: number = 0, moodLevel: number = 400) {
-    super(name, experice);
+  constructor(name: string, experience: number = 0, moodLevel: number = 400) {
+    super(name, experience);
+    this.name = name;
+    this.experience = experience;
     this.moodLevel = moodLevel;
   }
 
