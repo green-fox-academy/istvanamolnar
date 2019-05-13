@@ -1,11 +1,13 @@
 'use strict';
 
-export function getDiscount(Books: object): void {
-  let numOfBooks: number = Object.values(Books).reduce((a: number, b: number) => a + b);
+export function getDiscount(Books: any): void {
+  let numOfBooks: any = Object.values(Books).reduce((a: any, b: any) => a + b);
   let price: number = 0;
   while (numOfBooks > 0) {
     let counter = 0;
-    Object.values(Books).map((x: number) => x > 0 ? counter++ && x-- : 0)
+    for (let book in Books) {
+      Books[book] > 0 ? Books[book]-- && counter++ : false;
+    }
 
     switch(counter) {
       case 5:
