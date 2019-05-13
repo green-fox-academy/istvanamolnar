@@ -5,8 +5,8 @@ import {getIndex} from './getIndex';
 
 
 test('Correct solution', (t: any) => {
-  const testArray: string[] = ['alma', 'banan', 'citrom', 'dinnye', 'eper'];
-  t.deepEqual(getIndex(testArray, 'alma'), [0]);
+  const testArray: string[] = ['banan', 'citrom', 'alma', 'dinnye', 'eper'];
+  t.deepEqual(getIndex(testArray, 'alma'), [2]);
   t.end();
 }),
 
