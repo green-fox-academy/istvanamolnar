@@ -48,22 +48,29 @@ body {
   flex: 2;
   display: flex;
   align-items: center;
+  flex-direction: column;
+  padding: 5vw;
 }
 
+.hero {
+  height: 8px;
+  width: 63vw;
+  background-color: #536;
+  margin-bottom: 5vh;
+}
 
 .boxes {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  margin: 3vw;
 }
 
 .box {
-  height: 12vw;
-  width: 12vw;
+  height: 14vw;
+  width: 14vw;
   background-color: red;
-  margin: 2vh;
+  margin-top: 5vh;
 }
 
 .sidebar {
@@ -77,6 +84,7 @@ body {
 .box2 {
   background-color: #536;
   height: 10vh;
-  width: 30vw;
-  margin-top: 20px;
+  width: 25vw;
+  margin-top: 15px;
 }
+
