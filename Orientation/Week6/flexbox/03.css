@@ -11,7 +11,7 @@ body {
   list-style-type: none;
   margin: 0;
   padding: 0;
-  width: 100vw;
+  width: 99,99vw;
 }
 
 .menuleft {
@@ -40,7 +40,7 @@ body {
 .content {
   display: flex;
   height: calc(200vh - 80px);
-  width: 100vw;
+  width: 99,99vw;
 }
 
 .stuff {
@@ -62,15 +62,14 @@ body {
 .boxes {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
   justify-content: space-between;
+  height: 60vh;
 }
 
 .box {
   height: 14vw;
   width: 14vw;
   background-color: red;
-  margin-top: 5vh;
 }
 
 .sidebar {
