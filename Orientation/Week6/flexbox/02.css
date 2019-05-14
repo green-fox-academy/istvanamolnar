@@ -1,0 +1,47 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  background-color: #7ff;
+  height: 200px;
+  width: 99,99vw;
+}
+
+.content {
+  display: flex;
+  height: 200vh;
+  width: 99,99vw;
+  justify-content: space-between;
+}
+
+.blackBox {
+  height: 20vh;
+  width: 10vw;
+  background-color: #000;
+  position: relative;
+  left: 25vw;
+  top: 172vh;
+}
+
+.leftBar {
+  width: 20vw;
+  background-color: #fa0;
+}
+
+.mainContent {
+  width: 40vw;
+  background-color: #f10;
+}
+
+.rightBar {
+  width: 20vw;
+  background-color: #b3f;
+}
+
+footer {
+  width: 99,9vw;
+  height: 200px;
+  background-color: #40f;
+}
