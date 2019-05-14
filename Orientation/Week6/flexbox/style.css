@@ -1,0 +1,39 @@
+body{
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  align-items: center;
+  background-color: #b02aff;
+  display: flex;
+  height: 80px;
+  list-style-type: none;
+  margin: 0;
+  padding-left: 20px;
+  width: calc(100vw - 20px);
+}
+
+.menuitem {
+  background-color: #69ebfe;
+  width: 100px;
+  height: 40px;
+  margin-right: 20px;
+}
+
+.content {
+  margin: 0;
+  display: flex;
+  height: calc(100vh - 80px);
+  width: 100vw;
+}
+
+.left {
+  flex: 2;
+  background-color: #f5d62b;
+}
+
+.sidebar {
+  background-color: #51d400;
+  flex: 1;
+}
