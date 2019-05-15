@@ -13,7 +13,7 @@ let move = () => {
 }
 
 let down = () => {
-  let listItems = document.getElementsByClassName("need")[0].children;
+  let listItems = document.getElementsByClassName("available")[0].children;
   let index;
   for (let item in listItems) {
     if (listItems[item].className === "selectp") {
@@ -29,7 +29,7 @@ let down = () => {
 }
 
 let up = () => {
-  let listItems = document.getElementsByClassName("need")[0].children;
+  let listItems = document.getElementsByClassName("available")[0].children;
   let index;
   for (let item in listItems) {
     if (listItems[item].className === "selectp") {
