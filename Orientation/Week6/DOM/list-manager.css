@@ -1,9 +1,4 @@
-body {
-  text-align: center;
-}
-
 .list {
-  margin: auto;
   width: 30vw;
   height: 30vh;
   border: 2px solid #aaa;
