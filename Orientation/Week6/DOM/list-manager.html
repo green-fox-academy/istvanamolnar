@@ -1,28 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="list-manager.css">
   <title>List Manager</title>
 </head>
+
 <body>
   <h1>Shopping list:</h1>
   <div class="list">
-    <div class="box">
+    <div class="box need">
       <p class="selectp">bread</p>
       <p>milk</p>
       <p>orange</p>
       <p>tomato</p>
     </div>
     <div class="buttons">
-      <button>UP</button>
-      <button>>></button>
-      <button>X</button>
-      <button>DOWN</button>
+      <button onclick="up()" value="up">UP</button>
+      <button onclick="move()" value="move">>></button>
+      <button onclick="del()" value="del">X</button>
+      <button onclick="down()" value="down">DOWN</button>
     </div>
-    <div class="box"></div>
+    <div class="box have"></div>
   </div>
   <script type="text/javascript" src="list-manager.js"></script>
 </body>
+
 </html>
