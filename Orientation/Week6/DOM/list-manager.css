@@ -1,0 +1,46 @@
+body {
+  text-align: center;
+}
+
+.list {
+  margin: auto;
+  width: 30vw;
+  height: 30vh;
+  border: 2px solid #aaa;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.box {
+  height: 20vh;
+  width: 20vh;
+  border: 1px solid #000;
+  display: flex;
+  flex-flow: column;
+  align-items: stretch;
+  font-size: 4.3vh;
+}
+
+p {
+  margin: 0;
+  text-align: start;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  height: 20vh;
+  width: 10vh;
+  border: 1px solid #ccc;
+}
+
+button {
+  flex-grow: 1;
+  font-size: 2vh;
+}
+
+.selectp {
+  background-color: #bbb;
+}
+
