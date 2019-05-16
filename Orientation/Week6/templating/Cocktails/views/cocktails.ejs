@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Cocktails</title>
+    <link href="../static/cocktails.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <h1>Cocktails:</h1>
+    <div id="menu">
+      <div class="category">
+        <a href="/?alcohol=all" class="typeOfAlcohol">ALL</a>
+        <% for (let i = 0; i < alcoholList.length; i++) { %>
+          <a href= "/?alcohol=<%= alcoholList[i] %>" class="typeOfAlcohol"><%= alcoholList[i] %></a>
+        <% } %>
+      </div>
+      <ul>
+        <% for (let i = 0; i < cocktails.length; i++) { %>
+          <% if (cocktails[i].contains.indexOf(alcohol) !== -1) { %>
+            <li class="cocktailName"><%= cocktails[i].name %><br><p class="ingredients"><%= cocktails[i].contains.join(', ') %></p></li>
+            <p class="price"><%= cocktails[i].price %></p>
+          <% } else if (alcohol === 'all') { %>
+            <li class="cocktailName"><%= cocktails[i].name %><br><p class="ingredients"><%= cocktails[i].contains.join(', ') %></p></li>
+            <p class="price"><%= cocktails[i].price %></p>
+          <% } %>
+        <% } %>
+      </ul>
+    </div>
+  </body>
+</html>
