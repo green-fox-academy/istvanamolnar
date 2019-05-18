@@ -57,7 +57,13 @@ p, h3 {
   background-color: #fff;
   display: flex;
   justify-content: center;
+  opacity: 0.6;
   width: 3vw;
+}
+
+.arrow:hover {
+  background-color: #fff;
+  opacity: 1;
 }
 
 #imagearea {
@@ -92,7 +98,7 @@ p, h3 {
   box-shadow: 0px 9px 7px -3px rgba(0,0,0,0.7);
 }
 
-.smallImage:hover {
+.currentImage {
   -webkit-clip-path: polygon(50% 0, 60% 6%, 94% 6%, 95% 95%, 5% 95%, 5% 6%, 40% 6%);
   clip-path: polygon(50% 0, 60% 6%, 94% 6%, 95% 95%, 5% 95%, 5% 6%, 40% 6%);
 }
