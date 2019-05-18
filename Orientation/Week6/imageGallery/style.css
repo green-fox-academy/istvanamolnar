@@ -25,30 +25,16 @@ h1 {
 }
 
 #main {
-  align-items: center;
+  align-items: stretch;
   display: flex;
   height: 30vw;
   justify-content: space-between;
   margin: auto;
+  overflow: hidden;
   width: 60vw;
   -webkit-box-shadow: -1px 14px 27px 3px rgba(135,135,135,1);
   -moz-box-shadow: -1px 14px 27px 3px rgba(135,135,135,1);
   box-shadow: -1px 14px 27px 3px rgba(135,135,135,1);
-}
-
-#description {
-  color: #fff;
-  background-color: #000;
-  display: flex;
-  flex-direction: column;
-  margin: 0;
-  opacity: 0.7;
-  padding: 2vh;
-}
-
-p, h3 {
-  margin: 0;
-  font-size: 2vh;
 }
 
 .arrow {
@@ -66,14 +52,39 @@ p, h3 {
   opacity: 1;
 }
 
-#imagearea {
-  align-self: stretch;
-  background-image: url('images/guillaume-techer-1545360-unsplash.jpg');
-  background-size: cover;
-  display: flex;
-  flex-direction: column-reverse;
-  align-items: stretch;
+#bigImageContainer {
+  flex: 1;
+  position: relative;
+}
+
+h3 {
+  position: absolute;
+  bottom: 3vh;
+  left: 2vw;
+  color: #fff;
+  z-index: 1;
+}
+
+p {
+  position: absolute;
+  bottom: 0.5vh;
+  left: 2vw;
+  color: #ccc;
+  z-index: 1;
+}
+
+.textbg {
+  position: absolute;
+  bottom: 0px;
+  height: 9vh;
+  width: 54vw;
+  background-color: #000;
+  opacity: 0.5;
+}
+
+#bigImage {
   width: 100%;
+  z-index: -1;
 }
 
 #thumbnails {
@@ -84,11 +95,7 @@ p, h3 {
 }
 
 .smallImage {
-  background-position: center;
-  background-color: #fff;
-  background-image: url('images/john-fowler-1542373-unsplash.jpg');
-  background-size: 90% 90%;
-  background-repeat: no-repeat;
+  border: 6px solid #fff;
   border-radius: 2px;
   height: 10vh;
   margin: 1vh;
@@ -101,4 +108,7 @@ p, h3 {
 .currentImage {
   -webkit-clip-path: polygon(50% 0, 60% 6%, 94% 6%, 95% 95%, 5% 95%, 5% 6%, 40% 6%);
   clip-path: polygon(50% 0, 60% 6%, 94% 6%, 95% 95%, 5% 95%, 5% 6%, 40% 6%);
+  -webkit-box-shadow: 0px 9px 7px -3px rgba(0,0,0,0.7);
+  -moz-box-shadow: 0px 9px 7px -3px rgba(0,0,0,0.7);
+  box-shadow: 0px 9px 7px -3px rgba(0,0,0,0.7);
 }
