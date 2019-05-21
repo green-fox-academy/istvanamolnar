@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Prime squares</title>
+      <style>
+          * {
+              box-sizing: border-box;
+              font-family: arial;
+          }
+          section {
+              display: grid;
+              grid-auto-rows: 50px;
+              grid-template-columns: repeat(10, 1fr);
+              width: 1000px;
+              margin: 0 auto;
+          }
+          section div {
+              box-shadow: 0px 0px 10px #666 inset;
+              text-align: center;
+              line-height: 50px;
+          }
+          .not-prime {
+              background: tomato;
+          }
+          .prime {
+              background: limegreen;
+          }
+      </style>
+  </head>
+  <body>
+      <section>
+        <div class="not-prime">1</div>
+      </section>
+
+      <script>
+        addNumbers();
+        findPrime();
+        function findPrime() {
+          let table = document.getElementsByTagName("SECTION")[0].children;
+          for (let i = 2; i <= table.length; i++) {
+              setTimeout(function () {
+                table[i - 1].classList.add(isPrime(i) ? "prime" : "not-prime");
+              }, i * 100);
+          }
+        }
+        
+        function isPrime(value) {
+          for (let j = 2; j <= value / 2; j++) {
+            if (value % j === 0) {
+              return false;
+            }
+          }
+          return true;
+        }
+        
+        function addNumbers() {
+          for (let i = 2; i <= 100; i++) {
+            let newDiv = document.createElement("DIV");
+            newDiv.innerHTML = i;
+            document.getElementsByTagName("SECTION")[0].appendChild(newDiv);
+          }
+        }
+      </script>
+  </body>
+</html>
