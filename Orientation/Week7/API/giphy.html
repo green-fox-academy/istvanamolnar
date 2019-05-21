@@ -8,13 +8,16 @@
       display: flex;
       flex-flow: wrap;
     }
+    img {
+      flex: 1;
+    }
   </style>
 </head>
 <body>
   <div></div>
   <script>
     let httpRequest = new XMLHttpRequest();
-    httpRequest.open('GET', 'http://api.giphy.com/v1/gifs/search?q=cheeseburger&api_key=s4fukF0uyflz9nObXqnAfXzJKcpq7FBU&limit=6', true);
+    httpRequest.open('GET', 'http://api.giphy.com/v1/gifs/search?q=chicken&api_key=s4fukF0uyflz9nObXqnAfXzJKcpq7FBU&limit=6', true);
     httpRequest.send();
     httpRequest.onload = data => {
       for (let i = 0; i < 6; i++) {
