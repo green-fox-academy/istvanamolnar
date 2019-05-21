@@ -20,12 +20,14 @@
     httpRequest.open('GET', 'http://api.giphy.com/v1/gifs/search?q=chicken&api_key=s4fukF0uyflz9nObXqnAfXzJKcpq7FBU&limit=6', true);
     httpRequest.send();
     httpRequest.onload = data => {
-      for (let i = 0; i < 6; i++) {
-        const gif = JSON.parse(data.target.response).data[i].images.downsized_medium.url;
-        document.getElementsByTagName("DIV")[0].appendChild(document.createElement("IMG")).src = gif;
-      }
+      const gif = JSON.parse(data.target.response);
+      getImages(gif, 6);
     };
-    
-  </script>
+    function getImages(info, length) {
+      for (let i = 0; i < length; i++) {
+        document.getElementsByTagName("DIV")[0].appendChild(document.createElement("IMG")).src = info.data[i].images.downsized_medium.url;
+      }
+    }
+    </script>
 </body>
 </html>
