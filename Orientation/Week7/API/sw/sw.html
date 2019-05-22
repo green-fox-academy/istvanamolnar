@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Star Wars</title>
+</head>
+<body>
+    <form onsubmit="getChar(document.getElementById('char').value)">
+      <h4>Enter character name:</h4>
+      <input type="text" id="char"><br>
+      <input type="submit" value="Search">
+    </form>
+  <script>
+    const getChar = (x) => {
+      let httpRequest = new XMLHttpRequest();
+      httpRequest.open('GET', `https://swapi.co/api/people/${x}/`, true);
+      httpRequest.send(null);
+      httpRequest.onload = data => {
+        console.log(data);
+      }
+    }
+  </script>
+</body>
+</html>
