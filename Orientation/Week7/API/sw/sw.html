@@ -5,19 +5,24 @@
   <title>Star Wars</title>
 </head>
 <body>
-    <form onsubmit="getChar(document.getElementById('char').value)">
+    <form id="submit">
       <h4>Enter character name:</h4>
       <input type="text" id="char"><br>
-      <input type="submit" value="Search">
+      <input type="submit" value="Search" onclick="getChar(document.getElementById('char').value)">
     </form>
+    <div id="main"></div>
   <script>
     const getChar = (x) => {
       let httpRequest = new XMLHttpRequest();
       httpRequest.open('GET', `https://swapi.co/api/people/${x}/`, true);
       httpRequest.send(null);
       httpRequest.onload = data => {
-        console.log(data);
+        let character = JSON.parse(data.target.response);
+        let div = document.getElementById("main").appendChild(document.createElement("P")).innerHTML = character.name;
       }
+      document.getElementById("submit").addEventListener("click", function(event){
+        event.preventDefault()
+      });
     }
   </script>
 </body>
