@@ -30,10 +30,3 @@ connection.connect((err) => {
   }
   console.log('OK');
 });
-
-const logError = (err) => {
-  if (err) {
-    console.log(err.toString());
-    return;
-  }
-}
