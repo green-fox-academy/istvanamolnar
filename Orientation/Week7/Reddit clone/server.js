@@ -85,30 +85,36 @@ app.delete('/posts', (req, res) => {
       return;
     }
   });
-  console.log('Post deleted.');
-  res.send();
+  res.send('Post deleted.');
 })
 
-app.put('/posts/:id/upvote', (req, res) => {
-  connection.query(`UPDATE posts SET votes = votes + 1 WHERE id = ?`, [req.params.id], (err, rows) => {
+app.put('/posts/:post_id/upvote', (req, res) => {
+  connection.query(`UPDATE posts SET votes = votes + 1 WHERE post_id = ?`, [req.params.post_id], (err, rows) => {
     if (err) {
       console.log(err.toString());
       res.status(500).send('Database error');
       return;
     }
-    res.send("Upvoted");
+    if (rows.changedRows) {
+      res.send("Upvoted");
+    } else {
+      res.send("Invalid ID");
+    }
   });
 });
 
-app.put('/posts/:id/downvote', (req, res) => {
-  console.log(req.params.id);
-  connection.query(`UPDATE posts SET votes = votes - 1 WHERE id = ?`, [req.params.id], (err, rows) => {
+app.put('/posts/:post_id/downvote', (req, res) => {
+  connection.query(`UPDATE posts SET votes = votes - 1 WHERE post_id = ?`, [req.params.post_id], (err, rows) => {
     if (err) {
       console.log(err.toString());
       res.status(500).send('Database error');
       return;
     }
-    res.send("Downvoted");
+    if (rows.changedRows) {
+      res.send("Downvoted");
+    } else {
+      res.send("Invalid ID");
+    }
   });
 });
 
