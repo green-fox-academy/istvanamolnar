@@ -8,7 +8,6 @@ const port = 3000;
 
 app.use(express.json());
 
-app.listen(port, () => console.log(`The server is up and running on ${port}!`)); // should be at the end of the code
 
 //app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'index.html'))); // if UI => HTML
 
@@ -30,3 +29,9 @@ connection.connect((err) => {
   }
   console.log('OK');
 });
+
+app.get('*', (req, res) => {
+  res.send('URL is not valid');
+});
+
+app.listen(port, () => console.log(`The server is up and running on ${port}!`)); // should be at the end of the code
