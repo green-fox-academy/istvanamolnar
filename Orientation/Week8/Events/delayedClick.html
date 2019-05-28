@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>DelayedClick</title>
+</head>
+<body>
+  <button id="button" data-id="button">Click me</button>
+  <script>
+    const button = document.querySelector('#button');
+    button.addEventListener('click', (event) => {
+      button.disabled = true;
+      button.innerText = 'Disabled';
+      setTimeout(function() { 
+        button.disabled = false;
+        button.innerText = 'Click me';
+      }, 2000);
+    });
+  </script>
+</body>
+</html>
