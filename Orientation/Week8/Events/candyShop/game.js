@@ -20,6 +20,7 @@ document.querySelector('.buy-lollypops').addEventListener('click', () => {
   } else {
     document.querySelector('.infobar').innerText = 'Not enough Candy!';
   }
+  document.querySelector('.speed').innerText = Math.floor(lollyopCounter / 10);
 });
 
 const lollypopgenerator = setInterval(function(){ 
@@ -39,6 +40,14 @@ document.querySelector('.candy-machine').addEventListener('click', () => {
       time--;
     }
   }, 1000);
+
+  let boosted = setInterval(function(){ 
+    if (Math.floor(lollyopCounter / 10)) {
+      candyCounter += Math.floor(lollyopCounter / 10);
+      document.querySelector('.candies').innerText = candyCounter;
+    }
+  }, 100);
+
   setTimeout(() => {
     clearInterval(boosted);
     setInterval(function(){ 
@@ -49,10 +58,4 @@ document.querySelector('.candy-machine').addEventListener('click', () => {
       }
     }, 1000);
   }, 5000);
-  let boosted = setInterval(function(){ 
-    if (Math.floor(lollyopCounter / 10)) {
-      candyCounter += Math.floor(lollyopCounter / 10);
-      document.querySelector('.candies').innerText = candyCounter;
-    }
-  }, 100);
 });
