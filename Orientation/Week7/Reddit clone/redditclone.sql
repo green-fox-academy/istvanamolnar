@@ -28,3 +28,6 @@ VALUES ('Javascript','http://www.google.com',12, 1),
 ('Typescript','http://www.google.com',9, 2),
 ('mySQL','http://www.google.com',6, 3),
 ('EJS','http://www.google.com',3, 4);
+
+
+/* ALTER TABLE table1 MODIFY id INT auto_increment PRIMARY KEY; */
