@@ -32,7 +32,6 @@ const lollypopgenerator = setInterval(function(){
 }, 1000);
 
 document.querySelector('.candy-machine').addEventListener('click', () => {
-  clearInterval(lollypopgenerator);
   let time = 5;
   setInterval(() => {
     if (time) {
@@ -49,6 +48,7 @@ document.querySelector('.candy-machine').addEventListener('click', () => {
   }, 100);
 
   setTimeout(() => {
+    clearInterval(lollypopgenerator);
     clearInterval(boosted);
     setInterval(function(){ 
       if (Math.floor(lollyopCounter / 10)) {
