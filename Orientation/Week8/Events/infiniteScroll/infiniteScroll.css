@@ -1,0 +1,16 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+#infinity {
+  width: 99.99%;
+  height: 99.99vh;
+  overflow: auto;
+}
+
+#infinity div {
+  margin:0;
+  padding: 0;
+  height: 20vh;
+}
