@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <link rel="stylesheet" href="login.css">
+</head>
+<body>
+  <div id="loginform">
+    <form action="/login" method="POST">
+      <p>ACCOUNT LOGIN</p>
+      <div id="logindiv">
+        <label for="username">USERNAME:</label>
+        <input type="text" name="username" id="username" autofocus required>
+      </div>
+      <div id="passworddiv">
+        <label for="password">PASSWORD:</label>
+        <input type="password" name="password" id="password" pattern="[A-Za-z0-9]{8}" oninvalid="setCustomValidity('correct stuff plz')" required>
+        <a href="/forgotpassword">Forgot password</a>
+      </div>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</body>
+</html>

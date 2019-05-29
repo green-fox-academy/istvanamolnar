@@ -1,0 +1,60 @@
+body {
+  align-items: stretch;
+  background-color: #888;
+  color: #333;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 0.8em;
+  height: 100vh;
+  justify-content: center;
+  padding: 0;
+}
+
+form {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin: 0;
+}
+
+p {
+  align-self: flex-start;
+  font-size: 1.5em;
+}
+
+#loginform {
+  align-self: center;
+  background-color: #fff;
+  border-radius: 15px;
+  display: flex;
+  height: 400px;
+  justify-content: center; 
+  width: 400px;
+}
+
+#logindiv, #passworddiv {
+  display: flex;
+  flex-direction: column;
+}
+
+input:focus {
+  border: 3px solid green;
+}
+
+input {
+  border: 1px solid #999;
+  border-radius: 2px;
+  height: 30px;
+  padding: 5px;
+}
+
+button {
+  height: 40px;
+  width: 120px;
+  background-color: #333;
+  color: #fff;
+  border-radius: 25px;
+}
