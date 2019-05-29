@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <form action="/submitted" method="POST">
+    <div>
+      <p>What is your favourite pet?</p>
+      <label for="dog">Dog</label>
+      <input type="radio" name="favpet" value="dog" id="dog" />
+      <label for="cat">Cat</label>
+      <input type="radio" name="favpet" value="cat" id="cat" />
+      <label for="goldfish">Goldfish</label>
+      <input type="radio" name="favpet" value="goldfish" id="goldfish" />
+    </div>
+    <div>
+      <p>Do you want to sign up for cat facts?</p>
+      <label for="yes">Yes</label>
+      <input type="radio" name="catfacts" value="yes" id="yes" />
+      <label for="no">No</label>
+      <input type="radio" name="catfacts" value="no" id="no" />
+    </div>
+    <div>
+      <button id="lovecats" disabled>I love cats!</button>
+      <button id="signup" disabled>Sign up</button>
+    </div>
+  </form>
+
+  <script>
+    document.querySelector('form').addEventListener('click', () => {
+      document.querySelector('#signup').disabled = !(document.querySelector('#cat').checked || document.querySelector('#dog').checked || document.querySelector('#goldfish').checked);
+      document.querySelector('#lovecats').disabled = !(document.querySelector('#yes').checked);
+    });
+    document.querySelector('#lovecats').addEventListener('click', (event) => {
+      event.preventDefault();
+      alert('Thank you, you\'ve successfully signed up for cat facts');
+    });
+    document.querySelector('#signup').addEventListener('click', () => {
+      event.preventDefault();
+      document.querySelector('#goldfish').checked && document.querySelector('#no').checked ? alert('Sigh, we still added you to the cat facts list') : false;
+    });
+  </script> 
+</body>
+</html>
