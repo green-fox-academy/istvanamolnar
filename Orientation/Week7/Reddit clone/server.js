@@ -6,23 +6,11 @@ const bodyParser = require('body-parser');
 const mysql = require('mysql');
 const path = require('path');
 const port = 3000;
-const request = require('request');
 let userName = '';
 
 app.use(express.json());
 
 app.use(bodyParser.urlencoded({extended:true}));
-
-request('http://localhost:3000', (error, response, body) => {
-  if (error) {
-    console.log('Something went wrong.');
-    console.log(error);
-  } else {
-    if (response.statusCode === 200) {
-      //console.log(body);
-    }
-  }
-});
 
 const connection = mysql.createConnection({
   host: 'localhost',

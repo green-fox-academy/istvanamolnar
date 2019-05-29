@@ -9,7 +9,7 @@
     console.log(titles);
   }; */
 
-const bookIdRequest = new XMLHttpRequest();
+/* const bookIdRequest = new XMLHttpRequest();
   bookIdRequest.open('GET', 'http://localhost:3000/fulldata', true);
   bookIdRequest.send();
   bookIdRequest.onload = (data) => {
@@ -22,14 +22,14 @@ const bookIdRequest = new XMLHttpRequest();
       oneRow.appendChild(document.createElement("TD")).innerText = x.pub_name;
       oneRow.appendChild(document.createElement("TD")).innerText = `$ ${x.book_price}`;
     });
-  };
+  }; */
 
 /* const filterRequest = new XMLHttpRequest();
-filterRequest.open('GET', 'http://localhost:3000/books', true);
+filterRequest.open('GET', 'http://localhost:3000/books/?category=Science&category=Technology', true);
 filterRequest.send();
 filterRequest.onload = (data) => {
   console.log(data.target);
-  const filteredBooks = data.target.response;
+  const filteredBooks = JSON.parse(data.target.response);
   filteredBooks.forEach(x => {
     let oneRow= document.getElementsByTagName("tbody")[0].appendChild(document.createElement("TR"))
     oneRow.appendChild(document.createElement("TD")).innerText = x.book_name;
