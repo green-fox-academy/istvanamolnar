@@ -1,8 +1,7 @@
 'use strict';
 
 let infinity = document.getElementById('infinity');
-let number = Math.floor(Math.random() * 20);
-for (let i = 0; i < number; i++) {
+for (let i = 0; i < 6; i++) {
   infinity.appendChild(document.createElement('DIV')).style.backgroundColor = `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`;
 }
 

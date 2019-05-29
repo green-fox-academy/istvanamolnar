@@ -58,6 +58,7 @@ app.get('/posts', function (req, res) {
       return;
     }
     res.status(200);
+    console.table(rows);
     res.send(rows);
   });
 });

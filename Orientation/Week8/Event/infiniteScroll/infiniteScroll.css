@@ -4,8 +4,8 @@ body {
 }
 
 #infinity {
-  width: 99.99%;
-  height: 99.99vh;
+  width: 99.99vw;
+  height: 100vh;
   overflow: auto;
 }
 
