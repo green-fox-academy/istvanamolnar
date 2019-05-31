@@ -28,7 +28,7 @@ connection.connect((err) => {
 });
 
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html'));
+  res.sendFile(path.join(__dirname, './public/index.html'));
 });
 
 app.get('/hello', function (req, res) {
@@ -36,7 +36,6 @@ app.get('/hello', function (req, res) {
 })
 
 app.get('/posts', function (req, res) {
-  console.log(req.headers.username);
   req.accepts('application/json');
   res.set('Content-Type', 'application/json');
   connection.query(`SELECT * FROM posts;`, (err, rows) => {
