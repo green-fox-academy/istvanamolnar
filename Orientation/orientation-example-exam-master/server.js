@@ -36,8 +36,6 @@ app.post('/api/links', (req, res) => {
       res.status(500).send('Database error');
       return;
     }
-    res.status(200);
-
     if (rows.length === 0) {
       const secretCode = Math.floor(Math.random() * 9999);
       if (secretCode <= 999) { 
@@ -49,10 +47,17 @@ app.post('/api/links', (req, res) => {
           res.status(500).send('Database error');
           return;
         }
-      res.json(`Your URL is aliased to ${req.body.alias} and your secret code is ${secretCode}.`);
+      res.status(200).send(`Your URL is aliased to <strong>${req.body.alias}</strong> and your secret code is <strong>${secretCode}</strong>.`);
       });
     } else {
-      res.json(`Your alias is already in use!`);
+      connection.query(`UPDATE alias SET hitCount = hitCount + 1 WHERE alias = ?`, [req.body.alias], (err, rows) => {
+        if (err) {
+          console.log(err.toString());
+          res.status(500).send('Database error');
+          return;
+        }
+      });
+      res.status(400).json(`Your alias is already in use!`);
     }
   });
 });
