@@ -53,26 +53,31 @@ let select = document.querySelector('#category')
 select.addEventListener('click', () => {
   for (let i = 0; i < select.children.length; i++) {
     select.children[i].style.display = 'initial';
-    if (select.children[i].dataset.category !== select.value) {
-      console.log(select.children[i]);
+    if (select.children[i].value !== select.value) {
+      console.log(select.children[i].value);
       console.log(select.value);
       //select.children[i].style.display = 'none';
+      filterByCategory();
     }
   }
 });
+
 function filterByCategory() {
-  const bookIdRequest = new XMLHttpRequest();
-  bookIdRequest.open('GET', 'http://localhost:3000/fulldata', true);
-  bookIdRequest.send();
-  bookIdRequest.onload = (data) => {
+  const getBooks = new XMLHttpRequest();
+  getBooks.open('GET', 'http://localhost:3000/fulldata', true);
+  getBooks.send();
+  getBooks.onload = (data) => {
     const id = JSON.parse(data.target.response);
-    id.forEach(x => {
+    id.filter(movie => {
+
+    });
+    id.forEach(movie => {
       let oneRow= document.getElementsByTagName("tbody")[0].appendChild(document.createElement("TR"))
-      oneRow.appendChild(document.createElement("TD")).innerText = x.book_name;
-      oneRow.appendChild(document.createElement("TD")).innerText = x.aut_name;
-      oneRow.appendChild(document.createElement("TD")).innerText = x.cate_descrip;
-      oneRow.appendChild(document.createElement("TD")).innerText = x.pub_name;
-      oneRow.appendChild(document.createElement("TD")).innerText = `$ ${x.book_price}`;
+      oneRow.appendChild(document.createElement("TD")).innerText = movie.book_name;
+      oneRow.appendChild(document.createElement("TD")).innerText = movie.aut_name;
+      oneRow.appendChild(document.createElement("TD")).innerText = movie.cate_descrip;
+      oneRow.appendChild(document.createElement("TD")).innerText = movie.pub_name;
+      oneRow.appendChild(document.createElement("TD")).innerText = `$ ${movie.book_price}`;
     });
   };
 }
