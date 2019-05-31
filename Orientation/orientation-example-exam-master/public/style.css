@@ -1,0 +1,9 @@
+div {
+  display: flex;
+  flex-direction: column;
+  width: 20vw;
+}
+
+p {
+  color: #ff0000;
+}

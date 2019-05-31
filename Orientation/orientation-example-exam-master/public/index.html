@@ -3,8 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <title>URL Shortening</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  
+  <p id="response"></p>
+  <form id="signUpForm" action="/api/links" method="POST">
+    <div>
+      <label for="url">URL</label>
+      <input type="text" name="url" id="url" required>
+    </div>
+    <div>
+      <label for="alias">Alias</label>
+      <input type="text" name="alias" id="alias" required>
+    </div>
+    <button type="submit">Submit</button>
+  </form>
+  <script src="index.js"></script>
 </body>
 </html>
