@@ -18,9 +18,7 @@ const bookIdRequest = new XMLHttpRequest();
 document.querySelector('thead').addEventListener('click', (event) => {
   event.preventDefault();
   clearTable();
-  if (event.target.innerText[0] === 'C') {
-    console.log(event) //.target.selectedOptions[0].innerText);
-  } else {
+  if (event.target.innerText[0] !== 'C') {
     orderBy(event.target.href);
   }
 });
@@ -42,6 +40,11 @@ function orderBy(feature) {
   };
 }
 
+let select = document.querySelector('#category');
+select.addEventListener('click', (event) => {
+  filterByCategory(event.target.selectedOptions[0].innerText);
+});
+
 function clearTable() {
   const tableBody = document.querySelector('tbody');
   while (tableBody.firstChild) {
@@ -49,35 +52,21 @@ function clearTable() {
   }
 }
 
-let select = document.querySelector('#category')
-select.addEventListener('click', () => {
-  for (let i = 0; i < select.children.length; i++) {
-    select.children[i].style.display = 'initial';
-    if (select.children[i].value !== select.value) {
-      console.log(select.children[i].value);
-      console.log(select.value);
-      //select.children[i].style.display = 'none';
-      filterByCategory();
-    }
-  }
-});
-
-function filterByCategory() {
+function filterByCategory(select) {
   const getBooks = new XMLHttpRequest();
   getBooks.open('GET', 'http://localhost:3000/fulldata', true);
   getBooks.send();
   getBooks.onload = (data) => {
     const id = JSON.parse(data.target.response);
-    id.filter(movie => {
-
-    });
     id.forEach(movie => {
-      let oneRow= document.getElementsByTagName("tbody")[0].appendChild(document.createElement("TR"))
-      oneRow.appendChild(document.createElement("TD")).innerText = movie.book_name;
-      oneRow.appendChild(document.createElement("TD")).innerText = movie.aut_name;
-      oneRow.appendChild(document.createElement("TD")).innerText = movie.cate_descrip;
-      oneRow.appendChild(document.createElement("TD")).innerText = movie.pub_name;
-      oneRow.appendChild(document.createElement("TD")).innerText = `$ ${movie.book_price}`;
+      if (movie.cate_descrip === select) {
+        let oneRow= document.getElementsByTagName("tbody")[0].appendChild(document.createElement("TR"))
+        oneRow.appendChild(document.createElement("TD")).innerText = movie.book_name;
+        oneRow.appendChild(document.createElement("TD")).innerText = movie.aut_name;
+        oneRow.appendChild(document.createElement("TD")).innerText = movie.cate_descrip;
+        oneRow.appendChild(document.createElement("TD")).innerText = movie.pub_name;
+        oneRow.appendChild(document.createElement("TD")).innerText = `$ ${movie.book_price}`;
+      }
     });
   };
 }
