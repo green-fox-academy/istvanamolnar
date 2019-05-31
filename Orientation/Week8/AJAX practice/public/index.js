@@ -23,6 +23,11 @@ document.querySelector('thead').addEventListener('click', (event) => {
   }
 });
 
+let select = document.querySelector('#category');
+select.addEventListener('click', (event) => {
+  filterByCategory(event.target.selectedOptions[0].innerText);
+});
+
 function orderBy(feature) {
   const orderRequest = new XMLHttpRequest();
   orderRequest.open('GET', `${feature}`, true);
@@ -40,11 +45,6 @@ function orderBy(feature) {
   };
 }
 
-let select = document.querySelector('#category');
-select.addEventListener('click', (event) => {
-  filterByCategory(event.target.selectedOptions[0].innerText);
-});
-
 function clearTable() {
   const tableBody = document.querySelector('tbody');
   while (tableBody.firstChild) {
@@ -57,15 +57,15 @@ function filterByCategory(select) {
   getBooks.open('GET', 'http://localhost:3000/fulldata', true);
   getBooks.send();
   getBooks.onload = (data) => {
-    const id = JSON.parse(data.target.response);
-    id.forEach(movie => {
-      if (movie.cate_descrip === select) {
+    const books = JSON.parse(data.target.response);
+    books.forEach(book => {
+      if (book.cate_descrip === select) {
         let oneRow= document.getElementsByTagName("tbody")[0].appendChild(document.createElement("TR"))
-        oneRow.appendChild(document.createElement("TD")).innerText = movie.book_name;
-        oneRow.appendChild(document.createElement("TD")).innerText = movie.aut_name;
-        oneRow.appendChild(document.createElement("TD")).innerText = movie.cate_descrip;
-        oneRow.appendChild(document.createElement("TD")).innerText = movie.pub_name;
-        oneRow.appendChild(document.createElement("TD")).innerText = `$ ${movie.book_price}`;
+        oneRow.appendChild(document.createElement("TD")).innerText = book.book_name;
+        oneRow.appendChild(document.createElement("TD")).innerText = book.aut_name;
+        oneRow.appendChild(document.createElement("TD")).innerText = book.cate_descrip;
+        oneRow.appendChild(document.createElement("TD")).innerText = book.pub_name;
+        oneRow.appendChild(document.createElement("TD")).innerText = `$ ${book.book_price}`;
       }
     });
   };
