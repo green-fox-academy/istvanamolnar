@@ -7,13 +7,13 @@ const port = 3000;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static('public'))
+app.use(express.static('public'));
 
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, './public/newsletter.html'));
 });
 
-app.post('/signup', function (req, res) {
+app.post('/signup',(req, res) => {
   console.log(req.body);
   res.json(req.body);
 });

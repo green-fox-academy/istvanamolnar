@@ -1,12 +1,10 @@
 'use strict';
 
 
-const form = document.querySelector('#signUpForm').addEventListener("submit", (event) => {
+const form = document.querySelector('#signUpForm')
+form.addEventListener("submit", (event) => {
   event.preventDefault();
   doCall();
-});
-
-document.querySelector('button').addEventListener('click', (event) => {
 });
 
 const doCall = () => {
@@ -20,6 +18,7 @@ const doCall = () => {
     name: document.querySelector('input[name="username"]').value,
     email: document.querySelector('input[name="email"]').value
   })
-
   );
+  document.querySelector('input[name="username"]').value = '';
+  document.querySelector('input[name="email"]').value = '';
 }
