@@ -119,9 +119,4 @@ app.get('/byprice', (req, res) => {
   });
 });
 
-app.post('/signup',(req, res) => {
-  console.log(req.body);
-  res.json(req.body);
-});
-
 app.listen(port, () => console.log(`Server is running on port ${port}.`));
