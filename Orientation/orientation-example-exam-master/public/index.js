@@ -29,3 +29,11 @@ let respondToStatus = () => {
     alias: document.querySelector('input[name="alias"]').value
   }));
 }
+
+
+let getEntries = new XMLHttpRequest();
+  getEntries.open('GET', 'http://localhost:3000/api/links', true);
+  getEntries.setRequestHeader('Content-Type', 'application/json');
+  getEntries.onload = (data) => {
+    console.log(data);
+  }
