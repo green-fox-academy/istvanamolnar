@@ -82,7 +82,7 @@ app.delete('/api/links/:id', (req, res) => {
       return;
     }
     if (rows.length === 0) {
-      res.status(404);
+      res.status(404).send();
     } else {
       if (rows[0].secretCode === reqCode) {
         connection.query(`DELETE FROM alias WHERE id = ?;`, [req.params.id], (err, rows) => {
@@ -97,8 +97,6 @@ app.delete('/api/links/:id', (req, res) => {
         res.status(403).send();
       }
     }
-/*   console.log(rows);
-  res.send(rows); */
   });
 });
 
