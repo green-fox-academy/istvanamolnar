@@ -18,7 +18,7 @@ let respondToStatus = () => {
     } else if (data.target.status === 200) {
       const response = JSON.parse(data.target.response)[0];
       let alias = response.alias;
-      let secretCode =response.secretCode;
+      let secretCode = response.secretCode;
       message.innerHTML = `Your URL is aliased to <strong>${alias}</strong> and your secret code is <strong>${secretCode}</strong>.`
       document.querySelector('#signUpForm').reset();
       message.className = 'aliased';
@@ -32,8 +32,8 @@ let respondToStatus = () => {
 
 
 let getEntries = new XMLHttpRequest();
-  getEntries.open('GET', 'http://localhost:3000/api/links', true);
-  getEntries.setRequestHeader('Content-Type', 'application/json');
-  getEntries.onload = (data) => {
-    console.log(data);
-  }
+getEntries.open('GET', 'http://localhost:3000/api/links', true);
+getEntries.setRequestHeader('Content-Type', 'application/json');
+getEntries.onload = (data) => {
+  console.log(data);
+}

@@ -36,7 +36,7 @@ app.get('/api/links', (req, res) => {
       res.status(500).send('Database error');
       return;
     }
-  res.send(rows);
+    res.send(rows);
   });
 });
 
@@ -49,8 +49,8 @@ app.post('/api/links', (req, res) => {
     }
     if (rows.length === 0) { // if alias does not exist
       let secretCode = Math.floor(Math.random() * 9999);
-      if (secretCode <= 999) { 
-        secretCode += 1000; 
+      if (secretCode <= 999) {
+        secretCode += 1000;
       }
       connection.query(`INSERT INTO alias (url, alias, secretCode) VALUES (?, ?, ?);`, [req.body.url, req.body.alias, secretCode], (err, status) => {
         if (err) {
@@ -65,10 +65,10 @@ app.post('/api/links', (req, res) => {
             return;
           }
           res.status(200).send(rows);
-          });
         });
-      } else { // if alias exists
-        res.status(400).send(rows);
+      });
+    } else { // if alias exists
+      res.status(400).send(rows);
     }
   });
 });
@@ -116,7 +116,7 @@ app.get('/api/:alias', (req, res) => {
           res.status(500).send('Database error');
           return;
         }
-      res.send();
+        res.send();
       })
     }
   });
