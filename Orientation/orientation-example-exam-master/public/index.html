@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <title>URL Shortening</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" type="text/css">
 </head>
 <body>
-  <p id="response"></p>
+  <p id="message"></p>
   <form id="signUpForm" action="/api/links" method="POST">
     <div>
       <label for="url">URL</label>
@@ -16,7 +16,9 @@
       <label for="alias">Alias</label>
       <input type="text" name="alias" id="alias" required>
     </div>
-    <button type="submit">Submit</button>
+    <div>
+      <button type="submit">Submit</button>
+    </div>
   </form>
   <script src="index.js"></script>
 </body>

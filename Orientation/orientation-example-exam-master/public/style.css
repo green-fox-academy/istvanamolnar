@@ -3,3 +3,12 @@ div {
   flex-direction: column;
   width: 20vw;
 }
+
+.error {
+  color: #ff0000;
+  font-weight: bold;
+}
+
+.aliased{
+  color: #000000;
+}

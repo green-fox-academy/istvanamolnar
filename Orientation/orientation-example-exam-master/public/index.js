@@ -3,20 +3,25 @@
 const form = document.querySelector('#signUpForm')
 form.addEventListener("submit", (event) => {
   event.preventDefault();
-  doCall();
+  respondToStatus();
 });
 
-let doCall = () => {
+let respondToStatus = () => {
   let aliasRequest = new XMLHttpRequest();
   aliasRequest.open('POST', 'http://localhost:3000/api/links', true);
   aliasRequest.setRequestHeader('Content-Type', 'application/json');
   aliasRequest.onload = (data) => {
+    const message = document.querySelector('#message');
     if (data.target.status === 400) {
-      document.querySelector('p').innerText = data.target.response.slice(1, data.target.response.length - 1);
-      document.querySelector('p').style.color = "#ff0000";
+      message.innerText = `Your alias is already in use!`;
+      message.className = 'error';
     } else if (data.target.status === 200) {
-      document.querySelector('p').innerText = data.target.response;
-      document.querySelector('p').style.color = "#000000";
+      const response = JSON.parse(data.target.response)[0];
+      let alias = response.alias;
+      let secretCode =response.secretCode;
+      message.innerHTML = `Your URL is aliased to <strong>${alias}</strong> and your secret code is <strong>${secretCode}</strong>.`
+      document.querySelector('#signUpForm').reset();
+      message.className = 'aliased';
     }
   }
   aliasRequest.send(JSON.stringify({
@@ -24,9 +29,3 @@ let doCall = () => {
     alias: document.querySelector('input[name="alias"]').value
   }));
 }
-
-const successfullyCreated = () => {
-
-}
-/* document.querySelector('input[name="url"]').value = '';
-document.querySelector('input[name="alias"]').value = ''; */
