@@ -76,3 +76,24 @@ let goLeft = () => {
   }
   viewImage();
 }
+
+document.querySelector('#thumbnails').addEventListener('click', (event) => {
+  let newImage = document.createElement("IMG");
+  let newTitle = document.createElement("H3");
+  let newDescription = document.createElement("P");
+  let bg = document.createElement("DIV");
+  bg.className += "textbg";
+  document.getElementsByClassName("currentImage")[0].className = "smallImage";
+  let source = Images.filter(image => event.target.currentSrc.includes(image.url))[0];
+  event.target.className += " currentImage";
+  newDescription.innerHTML = source.description;
+  newTitle.innerHTML = source.title;
+  newImage.src = source.url;
+  newImage.id = "bigImage";
+  let main = document.getElementById("bigImageContainer");
+  main.innerHTML = "";
+  main.appendChild(newImage);
+  main.appendChild(newTitle);
+  main.appendChild(newDescription);
+  main.appendChild(bg);
+})
