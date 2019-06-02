@@ -18,9 +18,7 @@ const bookIdRequest = new XMLHttpRequest();
 document.querySelector('thead').addEventListener('click', (event) => {
   event.preventDefault();
   clearTable();
-  if (event.target.innerText[0] !== 'C') {
-    orderBy(event.target.href);
-  }
+  orderBy(event.target.href);
 });
 
 let select = document.querySelector('#category');
