@@ -64,11 +64,11 @@ app.post('/api/links', (req, res) => {
             res.status(500).send('Database error');
             return;
           }
-          res.status(200).send(rows);
+          res.send(rows);
         });
       });
     } else { // if alias exists
-      res.status(400).send(rows);
+      res.status(400).send();
     }
   });
 });
