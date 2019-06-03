@@ -4,8 +4,8 @@
 const form = document.querySelector('#signUpForm')
 form.addEventListener("submit", (event) => {
   event.preventDefault();
-//  doCall();
   addPost();
+//  doCall();
 });
 
 /* const doCall = () => {
