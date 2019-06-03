@@ -21,15 +21,20 @@
   })
 })();
 
+
+
 document.querySelector('thead').addEventListener('click', (event) => {
   event.preventDefault();
-  clearTable();
-  orderByCategory(event.target.pathname)
+  if (event.target.pathname !== undefined) {
+    clearTable();
+    orderByCategory(event.target.pathname);
+  }
   //orderBy(event.target.pathname);
 });
 
 let select = document.querySelector('#category');
 select.addEventListener('click', (event) => {
+  clearTable();
   filterByCategory(event.target.selectedOptions[0].innerText);
 });
 
@@ -78,6 +83,7 @@ function clearTable() {
 
 function filterByCategory(select){
   fetch(`http://localhost:3000/fulldata`)
+  .catch('nemjo')
   .then((res) => res.json())
   .then((data) => {
     data.forEach(book => {
