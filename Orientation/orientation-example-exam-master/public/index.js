@@ -59,7 +59,7 @@ let respondToStatus = () => {
     message.className = 'aliased';
   })
 
-  .catch(error => console.log(error))
+  .catch(error => console.error(error))
 }
 
 let getEntries = new XMLHttpRequest();
