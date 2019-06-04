@@ -97,7 +97,7 @@ app.delete('/api/links/:id', (req, res) => {
   });
 });
 
-app.get('/api/:alias', (req, res) => {
+app.get('/a/:alias', (req, res) => {
   connection.query(`SELECT * FROM alias WHERE alias = ?`, [req.params.alias], (err, rows) => {
     if (err) {
       console.log(err.toString());
@@ -119,8 +119,7 @@ app.get('/api/:alias', (req, res) => {
             res.status(500).send('Database error');
             return;
           }
-          console.log(rows);
-          res.redirect(rows);
+          res.redirect(rows[0].url);
         });
       })
     }

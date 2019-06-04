@@ -61,7 +61,6 @@ let respondToStatus = () => {
       message.className = 'aliased';
     }
   })
-
   .catch(error => console.error(error))
 }
 
