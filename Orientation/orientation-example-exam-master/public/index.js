@@ -51,12 +51,15 @@ let respondToStatus = () => {
     }
   })
   .then((data) => {
-    const response = data[0];
-    let alias = response.alias;
-    let secretCode = response.secretCode;
-    message.innerHTML = `Your URL is aliased to <strong>${alias}</strong> and your secret code is <strong>${secretCode}</strong>.`
-    document.querySelector('#signUpForm').reset();
-    message.className = 'aliased';
+    console.log(data[0]);
+    if (data !== undefined) {
+      const response = data[0];
+      let alias = response.alias;
+      let secretCode = response.secretCode;
+      message.innerHTML = `Your URL is aliased to <strong>${alias}</strong> and your secret code is <strong>${secretCode}</strong>.`
+      document.querySelector('#signUpForm').reset();
+      message.className = 'aliased';
+    }
   })
 
   .catch(error => console.error(error))
