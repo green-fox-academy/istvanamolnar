@@ -14,7 +14,7 @@ const connection = mysql.createConnection({
   host: 'localhost',
   user: 'istvan',
   password: 'mysqlPractice',
-  database: 'aliasdb'
+  database: 'quizapp'
 });
 
 connection.connect((err) => {
@@ -37,5 +37,29 @@ app.get('/questions', (req, res) => {
   res.sendFile(path.join(__dirname, './public/questions.html'));
 });
 
+app.get('/api/game', (req, res) => {
+  connection.query(`SELECT questions.id, questions.question, answers.answer
+  FROM answers RIGHT JOIN questions ON answers.question_id = questions.id`
+  , (err, rows) => {
+    if (err) {
+      console.log(err.toString());
+      res.status(500).send('Database error');
+      return;
+    }
+    console.table(rows);
+    res.json(rows);
+  });
+});
+
+app.get('/api/questions', (req, res) => {
+  connection.query(`SELECT * FROM questions RIGHT JOIN answers ON questions.id = answers.question_id`, (err, rows) => {
+    if (err) {
+      console.log(err.toString());
+      res.status(500).send('Database error');
+      return;
+    }
+    res.json(rows);
+  });
+});
 
 app.listen(port, () => console.log(`Server is running on port ${port}.`));
