@@ -73,6 +73,55 @@ app.post('/api/links', (req, res) => {
   });
 });
 
+/* 
+app.post('/api/links', (req, res) => {
+  let checkAlias;
+  let addAlias;
+  let getLastRecord;
+  checkAlias = new Promise ((resolve, reject) => {
+    connection.query(`SELECT * FROM alias WHERE alias = ?`, [req.body.alias], (err, rows) => {
+      if (err) {
+        reject(err);
+      }
+      resolve(rows);
+    });
+  });
+
+  addAlias = new Promise ((resolve, reject) => {
+    let secretCode = Math.floor(Math.random() * 9999);
+    connection.query(`INSERT INTO alias (url, alias, secretCode) VALUES (?, ?, ?);`, [req.body.url, req.body.alias, secretCode], (err, status) => {
+      if (err) {
+        reject(err);
+      }
+      resolve(status);
+    });
+  });
+  
+  getLastRecord = new Promise ((resolve, reject) => {
+    connection.query(`SELECT * FROM alias WHERE id = ?`, [status.insertId], (err, rows) => {
+      if (err) {
+        reject(err);
+      }
+      resolve(rows);
+    });
+  });
+
+  checkAlias
+    .then(data => {
+      if (data.length === 0) { // if alias does not exist
+        addAlias
+          .then(status => {
+            getLastRecord
+              .then(rows => res.send(rows))
+          })
+          .catch(error => console.log(error))
+      } else { // if alias exists
+        res.status(400).send();
+      }
+    })
+}); 
+*/
+
 app.delete('/api/links/:id', (req, res) => {
   let reqCode = req.body.secretCode;
   connection.query(`SELECT secretCode FROM alias WHERE id = ?`, [req.params.id], (err, rows) => {
