@@ -51,7 +51,6 @@ let respondToStatus = () => {
     }
   })
   .then((data) => {
-    console.log(data[0]);
     if (data !== undefined) {
       const response = data[0];
       let alias = response.alias;
