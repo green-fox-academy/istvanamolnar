@@ -1,0 +1,143 @@
+body {
+  align-items: center;
+  background-color: #eee;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Quicksand', sans-serif;
+  height: 100vh;
+  justify-content: space-evenly;
+  margin: 0 auto 50px auto;
+  padding: auto;
+  width: 100vw;
+}
+
+h1:nth-of-type(2) {
+  margin-top: 60px;
+}
+
+#manageQuestions {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+  padding: auto;
+}
+
+#deleteQuestions {
+  background-color: #fff;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  font-weight: 600;
+  padding: 25px 75px;
+  width: 600px;
+}
+
+.question {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.delete {
+  color: #f00;
+}
+.delete:hover {
+  cursor: pointer;
+  color: rgb(241, 97, 97);
+}
+
+hr { 
+  border-style: none;
+  width: 600px; 
+  height: 3px; 
+  background: #eee;
+}
+
+#newQuestion {
+  background-color: #fff;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  font-weight: 600;
+  justify-content: center;
+  padding: 50px 75px 35px 75px;
+  width: 600px;
+}
+
+.addQuestionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.addQuestion {
+  margin: 0;
+  width: 97%;
+}
+
+.addAnswer {
+  display: flex;
+  align-items: center;
+}
+
+input {
+  width: 100%;
+  margin: 10px;
+  padding: 5px;
+}
+
+.radio {
+  width: 5%;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  display: inline-block;
+  position: relative;
+  background-color: #f1f1f1;
+  color: #666;
+  height: 30px;
+  width: 30px;
+  border: 0;
+  border-radius: 50px;
+  cursor: pointer;     
+  outline: none;
+}
+.radio:checked::before {
+  position: absolute;
+  font: 13px/1 'Open Sans', sans-serif;
+  left: 11px;
+  top: 7px;
+  content: '\02143';
+  transform: rotate(40deg);
+}
+
+.answersTitle {
+  margin-block-end: 0;
+}
+
+#submit {
+    align-self: center;
+    background-color:#75c3ff;
+    border-style: none;
+    border-radius:10px;
+    color:#ffffff;
+    cursor:pointer;
+    display:inline-block;
+    font-size:20px;
+    height: 40px;
+    margin-top: 20px;
+    padding: auto;
+    text-decoration:none;
+    width: 150px;
+}
+
+#submit:hover {
+  background-color:#349ef0;
+}
+
+#submit:active {
+  position:relative;
+  top:1px;
+}
