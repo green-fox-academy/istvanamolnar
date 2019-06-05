@@ -37,17 +37,26 @@ app.get('/questions', (req, res) => {
   res.sendFile(path.join(__dirname, './public/questions.html'));
 });
 
-app.get('/api/game', (req, res) => {
-  connection.query(`SELECT questions.id, questions.question, answers.answer
-  FROM answers RIGHT JOIN questions ON answers.question_id = questions.id`
-  , (err, rows) => {
+app.get('/getaquestion', (req, res) => {
+  let numOfQuestions;
+  connection.query(`SELECT id FROM questions ORDER BY id desc LIMIT 1`, (err, rows) => {
     if (err) {
       console.log(err.toString());
       res.status(500).send('Database error');
       return;
     }
-    console.table(rows);
-    res.json(rows);
+    numOfQuestions = rows[0].id;
+    let getRandomNumber = Math.floor(Math.random() * (numOfQuestions + 1));
+
+    connection.query(`SELECT questions.question, answers.answer
+    FROM answers RIGHT JOIN questions ON answers.question_id = questions.id WHERE questions.id = ${getRandomNumber}`, (err, rows) => {
+      if (err) {
+        console.log(err.toString());
+        res.status(500).send('Database error');
+        return;
+      }
+      res.json(rows);
+    });
   });
 });
 
