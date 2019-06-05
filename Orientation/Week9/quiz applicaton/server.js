@@ -46,9 +46,9 @@ app.get('/getaquestion', (req, res) => {
       return;
     }
     numOfQuestions = rows[0].id;
-    let getRandomNumber = Math.floor(Math.random() * (numOfQuestions + 1));
+    let getRandomNumber = Math.floor(Math.random() * numOfQuestions) + 1;
 
-    connection.query(`SELECT questions.question, answers.answer
+    connection.query(`SELECT questions.question, answers.answer 
     FROM answers RIGHT JOIN questions ON answers.question_id = questions.id WHERE questions.id = ${getRandomNumber}`, (err, rows) => {
       if (err) {
         console.log(err.toString());
@@ -61,7 +61,7 @@ app.get('/getaquestion', (req, res) => {
 });
 
 app.get('/api/questions', (req, res) => {
-  connection.query(`SELECT * FROM questions RIGHT JOIN answers ON questions.id = answers.question_id`, (err, rows) => {
+  connection.query(`SELECT * FROM questions`, (err, rows) => {
     if (err) {
       console.log(err.toString());
       res.status(500).send('Database error');
@@ -70,5 +70,18 @@ app.get('/api/questions', (req, res) => {
     res.json(rows);
   });
 });
+
+app.delete('/deletequestion', (req, res) => {
+  connection.query(`DELETE FROM questions WHERE id = ${req.body.questionId};`, (err, rows) => {
+    if (err) {
+      console.log(err.toString());
+      res.status(500).send('Database error');
+      return;
+    }
+    res.json(rows);
+  });
+});
+
+
 
 app.listen(port, () => console.log(`Server is running on port ${port}.`));
