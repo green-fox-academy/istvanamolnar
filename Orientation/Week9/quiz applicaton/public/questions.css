@@ -15,7 +15,7 @@ h1:nth-of-type(2) {
 }
 
 p {
-  padding-right: 5px;
+  padding-right: 8px;
 }
 
 #manageQuestions {
@@ -25,10 +25,6 @@ p {
   justify-content: center;
   margin: 0 auto;
   padding: auto;
-}
-
-.bottomBorder {
-  border-bottom: 3px solid #eee;
 }
 
 #deleteQuestions {
@@ -61,7 +57,7 @@ p {
   display: flex;
   flex-direction: column;
   font-weight: 600;
-  justify-content: center;
+  justify-content: flex-start;
   padding: 50px 75px 35px 75px;
   width: 600px;
 }
@@ -84,8 +80,23 @@ p {
 
 input {
   width: 100%;
-  margin: 10px;
   padding: 5px;
+}
+
+h5 {
+  margin-right: 5px;
+}
+
+#answerData {
+  display: grid;
+  grid-template-columns: 90% 10%;
+}
+
+#radioButtons {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px 0 10px 10px;
 }
 
 .radio {
@@ -111,6 +122,10 @@ input {
   top: 7px;
   content: '\02143';
   transform: rotate(40deg);
+}
+
+.bottomBorder {
+  border-bottom: 3px solid #eee;
 }
 
 .answersTitle {
@@ -140,4 +155,16 @@ input {
 #submit:active {
   position:relative;
   top:1px;
+}
+
+#backToGame {
+  color: #4b98db;
+  font-family: 'ZCOOL KuaiLe', cursive;
+  font-weight: 600;
+  letter-spacing: 2px;
+  margin-top: 10px;
+}
+
+#backToGame:hover {
+  cursor: pointer;
 }

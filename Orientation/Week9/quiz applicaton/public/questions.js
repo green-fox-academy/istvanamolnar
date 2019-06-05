@@ -55,5 +55,16 @@ addQuestionForm.addEventListener('submit', (event) => {
   .then(data => {
     addQuestionForm.reset();
     alert('Question added');
+    return data.json();
+  })
+  .then(data => {
+    let sibling = document.querySelector('#deleteQuestions');
+    sibling.lastChild.className = "question bottomBorder";
+    let dataDiv = sibling.appendChild(document.createElement('DIV'));
+    dataDiv.className = "question";
+    dataDiv.appendChild(document.createElement('P')).innerText = data.question;
+    dataDiv.appendChild(document.createElement('A')).innerText = "delete";
+    dataDiv.lastChild.className = "delete";
+    dataDiv.lastChild.setAttribute("data-id", data.id);
   })
 });

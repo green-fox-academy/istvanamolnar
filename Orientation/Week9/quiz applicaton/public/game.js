@@ -1,35 +1,37 @@
 'use strict';
 
-/* 
-let getAQuestion = new XMLHttpRequest();
-getAQuestion.open('GET', 'http://localhost:3000/getaquestion', true);
-getAQuestion.setRequestHeader('Content-Type', 'application/json');
-getAQuestion.send();
-getAQuestion.onload = (data) => {
-  let dataRecieved = JSON.parse(data.target.response);
-  let question =  dataRecieved[0].question;
-  let answerOne =  dataRecieved[0].answer;
-  let answerTwo =  dataRecieved[1].answer;
-  let answerThree =  dataRecieved[2].answer;
-  let answerFour =  dataRecieved[3].answer;
-  document.querySelector('#question').innerText = question;
-  document.querySelector('#a1').innerText = answerOne;
-  document.querySelector('#a2').innerText = answerTwo;
-  document.querySelector('#a3').innerText = answerThree;
-  document.querySelector('#a4').innerText = answerFour;
-}; */
-
 fetch(`http://localhost:3000/getaquestion`)
   .then((res) => res.json())
   .then((data) => {
-    let question =  data[0].question;
-    let answerOne =  data[0].answer;
-    let answerTwo =  data[1].answer;
-    let answerThree =  data[2].answer;
-    let answerFour =  data[3].answer;
-    document.querySelector('#question').innerText = question;
-    document.querySelector('#a1').innerText = answerOne;
-    document.querySelector('#a2').innerText = answerTwo;
-    document.querySelector('#a3').innerText = answerThree;
-    document.querySelector('#a4').innerText = answerFour;
+    document.querySelector('#question').firstChild.innerText = data[0].question;
+    document.querySelector('#question').setAttribute("data-id", data[0].qid);
+    const answerArea = document.querySelector('#answers');
+    data.forEach(answer => {
+      let option = answerArea.appendChild(document.createElement('DIV'));
+      option.className = 'answer';
+      option.innerText = answer.answer;
+      option.setAttribute("data-id", answer.aid);
+    })
   })
+
+
+document.querySelector('#answers').addEventListener('click', (event) => {
+  if (event.target.className === 'answer') {
+    event.target.className += ' clickedOption';
+    const answerId = event.target.dataset.id;
+    const questionId = document.querySelector('#question').dataset.id;
+    fetch(`http://localhost:3000/checkanswer/?qid=${questionId}&aid=${answerId}`)
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data[0].id);
+      console.log(answerId);
+      setTimeout(() => {
+        if (parseInt(answerId) === data[0].id) {
+          console.log('NICE');
+        } else {
+          console.log('lofasz');
+        }
+      }, 3000);
+    })
+  }
+}, {once: true});

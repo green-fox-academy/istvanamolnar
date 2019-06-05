@@ -37,28 +37,10 @@ app.get('/questions', (req, res) => {
   res.sendFile(path.join(__dirname, './public/questions.html'));
 });
 
-app.get('/getaquestion', (req, res) => {
-  let numOfQuestions;
-  connection.query(`SELECT id FROM questions ORDER BY id desc LIMIT 1`, (err, rows) => {
-    if (err) {
-      console.log(err.toString());
-      res.status(500).send('Database error');
-      return;
-    }
-    numOfQuestions = rows[0].id;
-    let getRandomNumber = Math.floor(Math.random() * numOfQuestions) + 1;
 
-    connection.query(`SELECT questions.question, answers.answer 
-    FROM answers RIGHT JOIN questions ON answers.question_id = questions.id WHERE questions.id = ?`, [getRandomNumber], (err, rows) => {
-      if (err) {
-        console.log(err.toString());
-        res.status(500).send('Database error');
-        return;
-      }
-      res.json(rows);
-    });
-  });
-});
+  // -------------------------------- //
+ // requests for modifying questions //
+// -------------------------------- //
 
 app.get('/api/questions', (req, res) => {
   connection.query(`SELECT * FROM questions`, (err, rows) => {
@@ -110,9 +92,48 @@ app.post('/addquestion', (req, res) => {
           res.status(500).send('Database error');
           return;
         }
-        res.send();
+        res.json({question: req.body.question, id: questionId});
       });
     });
+  });
+})
+
+
+  // ------------------------- //
+ // requests for playing quiz //
+// ------------------------- //
+
+app.get('/getaquestion', (req, res) => {
+  let numOfQuestions;
+  connection.query(`SELECT * FROM questions`, (err, rows) => {
+    if (err) {
+      console.log(err.toString());
+      res.status(500).send('Database error');
+      return;
+    }
+    numOfQuestions = rows.length;
+    let getRandomNumber = Math.floor(Math.random() * numOfQuestions);
+
+    connection.query(`SELECT questions.question, questions.id AS qid, answers.answer, answers.id AS aid 
+    FROM answers RIGHT JOIN questions ON answers.question_id = questions.id WHERE questions.id = ?`, [rows[getRandomNumber].id], (err, rows) => {
+      if (err) {
+        console.log(err.toString());
+        res.status(500).send('Database error');
+        return;
+      }
+      res.json(rows);
+    });
+  });
+});
+
+app.get('/checkanswer', (req, res) => {
+  connection.query(`SELECT id FROM answers WHERE question_id = ? AND is_correct = 1`, [req.query.qid], (err, rows) => {
+    if (err) {
+      console.log(err.toString());
+      res.status(500).send('Database error');
+      return;
+    }
+    res.json(rows);
   });
 })
 

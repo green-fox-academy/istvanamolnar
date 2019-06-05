@@ -1,19 +1,19 @@
 body {
-  display: flex;
   align-items: center;
+  background-color: #eee;
+  display: flex;
+  font-family: 'Quicksand', sans-serif;
+  height: 100vh;
   justify-content: center;
   margin: 0 auto;
   padding: auto;
-  background-color: #eee;
-  height: 100vh;
   width: 100vw;
-  font-family: 'Quicksand', sans-serif;
 }
 
 #gamearea {
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 
 #score {
@@ -24,43 +24,52 @@ body {
   padding: 20px;
 }
 
-#questarea {
+#questionarea {
   align-items: stretch;
   background-color: #fff;
   border-radius: 15px;
   display:flex;
   flex-direction: column;
-  height: 400px;
+  flex-grow: 1;
+  height: 500px;
   justify-content: space-evenly;
   padding: 30px 60px 60px 60px;
   width: 500px;
 }
 
 #question {
-  text-align: center;
+  align-items: center;
+  display: flex;
   font-size: 28px;
   font-weight: 600;
+  height: 150px;
+  justify-content: center;
+  text-align: center;
+}
+
+#question:first-child {
+  margin: 0;
 }
 
 #answers {
   display: flex;
   flex-direction: column;
-  text-align: center;
-  justify-content: space-between;
   height: 300px;
+  justify-content: space-between;
+  text-align: center;
 }
 
 .answer {
-  display: flex;
-  justify-content: center;
   align-items: center;
   background-color: #4b98db;
-  height: 65px;
-  color: #fff;
-  font-weight: 700;
-  font-size: 18px;
-  letter-spacing: 2px;
   border-radius: 5px;
+  display: flex;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 700;
+  justify-content: center;
+  height: 65px;
+  letter-spacing: 2px;
 }
 
 #managequestions {
@@ -68,4 +77,12 @@ body {
   font-family: 'ZCOOL KuaiLe', cursive;
   font-weight: 600;
   letter-spacing: 2px;
+}
+
+#managequestions:hover {
+  cursor: pointer;
+}
+
+.clickedOption {
+  background-color: #d18800;
 }
