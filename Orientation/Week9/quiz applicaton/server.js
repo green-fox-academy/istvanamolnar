@@ -49,7 +49,7 @@ app.get('/getaquestion', (req, res) => {
     let getRandomNumber = Math.floor(Math.random() * numOfQuestions) + 1;
 
     connection.query(`SELECT questions.question, answers.answer 
-    FROM answers RIGHT JOIN questions ON answers.question_id = questions.id WHERE questions.id = ${getRandomNumber}`, (err, rows) => {
+    FROM answers RIGHT JOIN questions ON answers.question_id = questions.id WHERE questions.id = ?`, [getRandomNumber], (err, rows) => {
       if (err) {
         console.log(err.toString());
         res.status(500).send('Database error');
@@ -72,16 +72,48 @@ app.get('/api/questions', (req, res) => {
 });
 
 app.delete('/deletequestion', (req, res) => {
-  connection.query(`DELETE FROM questions WHERE id = ${req.body.questionId};`, (err, rows) => {
+  connection.query(`DELETE FROM questions WHERE id = ?;`, [req.body.questionId], (err, status) => {
     if (err) {
       console.log(err.toString());
       res.status(500).send('Database error');
       return;
     }
-    res.json(rows);
+    connection.query(`DELETE FROM answers WHERE question_id = ?;`, [req.body.questionId], (err, status) => {
+      if (err) {
+        console.log(err.toString());
+        res.status(500).send('Database error');
+        return;
+      }
+    });
   });
 });
 
-
+app.post('/addquestion', (req, res) => {
+  let questionId;
+  connection.query(`INSERT INTO questions (question) VALUES (?)`, [req.body.question], (err, status) => {
+    if (err) {
+      console.log(err.toString());
+      res.status(500).send('Database error');
+      return;
+    }
+    connection.query(`SELECT id FROM questions WHERE question = ?`, [req.body.question], (err, status) => {
+      if (err) {
+        console.log(err.toString());
+        res.status(500).send('Database error');
+        return;
+      }
+      questionId = status[0].id;
+      connection.query(`INSERT INTO answers (question_id, answer, is_correct) VALUES 
+      (?, ?, ?), (?, ?, ?), (?, ?, ?), (?, ?, ?)`, [questionId, req.body.answer1.text, req.body.answer1.is_correct, questionId, req.body.answer2.text, req.body.answer2.is_correct,questionId, req.body.answer3.text, req.body.answer3.is_correct,questionId, req.body.answer4.text, req.body.answer4.is_correct], (err, status) => {
+        if (err) {
+          console.log(err.toString());
+          res.status(500).send('Database error');
+          return;
+        }
+        res.send();
+      });
+    });
+  });
+})
 
 app.listen(port, () => console.log(`Server is running on port ${port}.`));

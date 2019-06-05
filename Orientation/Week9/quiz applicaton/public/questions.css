@@ -27,6 +27,10 @@ p {
   padding: auto;
 }
 
+.bottomBorder {
+  border-bottom: 3px solid #eee;
+}
+
 #deleteQuestions {
   background-color: #fff;
   border-radius: 15px;
@@ -49,13 +53,6 @@ p {
 .delete:hover {
   cursor: pointer;
   color: rgb(241, 97, 97);
-}
-
-hr { 
-  border-style: none;
-  width: 600px; 
-  height: 3px; 
-  background: #eee;
 }
 
 #newQuestion {
