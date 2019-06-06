@@ -1,0 +1,119 @@
+body {
+  align-items: center;
+  background-color: #eee;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Quicksand', sans-serif;
+  height: 100vh;
+  justify-content: center;
+  margin: 0 auto;
+  padding: auto;
+  width: 100vw;
+}
+
+h1 {
+  font-family: 'ZCOOL KuaiLe', cursive;
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+div {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border-radius: 15px;
+  height: 300px;
+  justify-content: center;
+  padding: 30px 60px 60px 60px;
+  max-width: 300px;
+}
+
+button {
+  align-self: center;
+  background-color:#75c3ff;
+  border-style: none;
+  border-radius:10px;
+  color:#ffffff;
+  cursor:pointer;
+  display:inline-block;
+  font-size:16px;
+  height: 40px;
+  margin-top: 20px;
+  padding: auto;
+  text-decoration:none;
+  width: 150px;
+}
+
+button:hover {
+background-color:#349ef0;
+}
+
+button:active {
+position:relative;
+top:1px;
+}
+
+.username {
+  position: relative;
+  margin: auto;
+  width: 100%;
+  max-width: 280px;
+}
+.username .label {
+  border-radius: 15px;
+  position: absolute;
+  top: 16px;
+  left: 0;
+  font-size: 16px;
+  color: #9098a9;
+  font-weight: 500;
+  transform-origin: 0 0;
+  transition: all 0.2s ease;
+}
+.username .border {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background: #75c3ff;
+  transform: scaleX(0);
+  transform-origin: 0 0;
+  transition: all 0.15s ease;
+}
+.username input {
+  -webkit-appearance: none;
+  width: 100%;
+  border: 0;
+  font-family: inherit;
+  padding: 12px 0;
+  height: 48px;
+  font-size: 16px;
+  font-weight: 500;
+  border-bottom: 2px solid #c8ccd4;
+  background: none;
+  border-radius: 0;
+  color: #223254;
+  transition: all 0.15s ease;
+}
+
+.username input:not(:placeholder-shown) + span {
+  color: #5a667f;
+  transform: translateY(-26px) scale(0.75);
+}
+.username input:focus {
+  background: none;
+  outline: none;
+}
+.username input:focus + span {
+  color: #75c3ff;
+  transform: translateY(-26px) scale(0.75);
+}
+.username input:focus + span + .border {
+  transform: scaleX(1);
+}

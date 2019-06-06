@@ -83,6 +83,14 @@ body {
   cursor: pointer;
 }
 
-.clickedOption {
+.chosenOption {
   background-color: #d18800;
+}
+
+.correct {
+  background-color: #33b766;
+}
+
+.wrong {
+  background-color: #b90000;
 }
