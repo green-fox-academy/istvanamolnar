@@ -46,10 +46,10 @@ addQuestionForm.addEventListener('submit', (event) => {
     },
       body:JSON.stringify({
       question: `${event.target.elements[0].value}`,
-      answer1: {text: `${event.target.elements[1].value}`, is_correct: `${event.target.elements[2].checked ? "1" : "0"}`},
-      answer2: {text: `${event.target.elements[3].value}`, is_correct: `${event.target.elements[4].checked ? "1" : "0"}`},
-      answer3: {text: `${event.target.elements[5].value}`, is_correct: `${event.target.elements[6].checked ? "1" : "0"}`},
-      answer4: {text: `${event.target.elements[7].value}`, is_correct: `${event.target.elements[8].checked ? "1" : "0"}`},
+      answer1: {text: `${event.target.elements[1].value}`, is_correct: `${event.target[5].checked ? "1" : "0"}`},
+      answer2: {text: `${event.target.elements[2].value}`, is_correct: `${event.target[6].checked ? "1" : "0"}`},
+      answer3: {text: `${event.target.elements[3].value}`, is_correct: `${event.target[7].checked ? "1" : "0"}`},
+      answer4: {text: `${event.target.elements[4].value}`, is_correct: `${event.target[8].checked ? "1" : "0"}`},
     })
   })
   .then(data => {

@@ -103,24 +103,35 @@ app.post('/addquestion', (req, res) => {
  // requests for playing quiz //
 // ------------------------- //
 
+let blacklist = [];
 app.get('/getaquestion', (req, res) => {
   let numOfQuestions;
-  connection.query(`SELECT * FROM questions`, (err, rows) => {
+  connection.query(`SELECT * FROM questions`, (err, rowsOfQuestions) => {
     if (err) {
       console.log(err.toString());
       res.status(500).send('Database error');
       return;
     }
-    numOfQuestions = rows.length;
-    let getRandomNumber = Math.floor(Math.random() * numOfQuestions);
-
+    numOfQuestions = rowsOfQuestions.length;
+    function getRandomArray() {
+      while (blacklist.length !== 10) {
+        let randomNumber = Math.floor(Math.random() * numOfQuestions);
+        blacklist.indexOf(randomNumber) === -1 ? blacklist.push(randomNumber) : false;
+      }
+    }
+    if (blacklist.length === 0) {
+      getRandomArray();
+    }
+    
     connection.query(`SELECT questions.question, questions.id AS qid, answers.answer, answers.id AS aid 
-    FROM answers RIGHT JOIN questions ON answers.question_id = questions.id WHERE questions.id = ?`, [rows[getRandomNumber].id], (err, rows) => {
+    FROM answers RIGHT JOIN questions ON answers.question_id = questions.id 
+    WHERE questions.id = ?`, [rowsOfQuestions[blacklist[0]].id], (err, rows) => {
       if (err) {
         console.log(err.toString());
         res.status(500).send('Database error');
         return;
       }
+      blacklist.shift();
       res.json(rows);
     });
   });

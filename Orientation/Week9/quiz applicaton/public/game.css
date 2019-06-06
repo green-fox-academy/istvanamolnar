@@ -15,6 +15,13 @@ body {
   display: flex;
   flex-direction: column;
 }
+#questionCounter {
+  font-family: 'ZCOOL KuaiLe', cursive;
+  font-size: 36px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  padding: 20px;
+}
 
 #score {
   font-family: 'ZCOOL KuaiLe', cursive;
@@ -25,12 +32,11 @@ body {
 }
 
 #questionarea {
-  align-items: stretch;
+  align-items: space-evenly;
   background-color: #fff;
   border-radius: 15px;
   display:flex;
   flex-direction: column;
-  flex-grow: 1;
   height: 500px;
   justify-content: space-evenly;
   padding: 30px 60px 60px 60px;
@@ -40,9 +46,10 @@ body {
 #question {
   align-items: center;
   display: flex;
+  flex-direction: column;
   font-size: 28px;
   font-weight: 600;
-  height: 150px;
+  max-height: 250px;
   justify-content: center;
   text-align: center;
 }
@@ -94,3 +101,27 @@ body {
 .wrong {
   background-color: #b90000;
 }
+
+button {
+  align-self: center;
+  background-color:#75c3ff;
+  border-style: none;
+  border-radius:10px;
+  color:#ffffff;
+  cursor:pointer;
+  font-size:20px;
+  font-weight: 600;
+  height: 60px;
+  margin-top: 20px;
+  text-decoration:none;
+  width: 200px;
+}
+
+button:hover {
+background-color:#349ef0;
+}
+/* 
+button:active {
+position:relative;
+top:1px;
+} */
