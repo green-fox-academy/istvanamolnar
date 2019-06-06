@@ -29,19 +29,50 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, './public/index.html'));
 });
 
-app.get('/api/links', (req, res) => {
-  connection.query(`SELECT id, url, alias, hitCount FROM alias`, (err, rows) => {
-    if (err) {
-      console.log(err.toString());
-      res.status(500).send('Database error');
-      return;
-    }
-    res.send(rows);
+const mysqlQueryPromise = (mySQLQueryText, details) => {
+  return new Promise((resolve, reject) => {
+    connection.query(mySQLQueryText, details,
+      (error, data) => {
+        error ? reject(error) : resolve(data);
+      }
+    );
   });
-});
+};
+
+app.get('/api/links', (req, res) => {
+  mysqlQueryPromise(`SELECT id, url, alias, hitCount FROM alias LIMIT 1`)
+    .then(data => res.status(200).json(data))
+    .catch(error => console.log(error))
+  });
+/* connection.query(`SELECT id, url, alias, hitCount FROM alias LIMIT 1`, (err, rows) => {
+  if (err) {
+    console.log(err.toString());
+    res.status(500).send('Database error');
+    return;
+  }
+  res.status(200).json(rows);
+}); */
 
 app.post('/api/links', (req, res) => {
-  connection.query(`SELECT * FROM alias WHERE alias = ?`, [req.body.alias], (err, rows) => {
+  let secretCode;
+  mysqlQueryPromise(`SELECT * FROM alias WHERE alias = ?`, [req.body.alias])
+    .then(data => {
+      if (data.length === 0) { // if alias does not exist
+        secretCode = Math.floor(Math.random() * 9999);
+        mysqlQueryPromise(`INSERT INTO alias (url, alias, secretCode) VALUES (?, ?, ?);`, [req.body.url, req.body.alias, secretCode])
+          .then(status => {
+            mysqlQueryPromise(`SELECT * FROM alias WHERE id = ?`, [status.insertId])
+              .then(data => res.status(201).json(data))
+              .catch(error => console.log(error))
+          })
+          .catch(error => console.log(error))
+      } else {
+        res.status(400).send();
+      }
+    })
+    .catch(error => console.log(error))
+});
+ /*  connection.query(`SELECT * FROM alias WHERE alias = ?`, [req.body.alias], (err, rows) => {
     if (err) {
       console.log(err.toString());
       res.status(500).send('Database error');
@@ -49,7 +80,7 @@ app.post('/api/links', (req, res) => {
     }
     if (rows.length === 0) { // if alias does not exist
       let secretCode = Math.floor(Math.random() * 9999);
-      connection.query(`INSERT INTO alias (url, alias, secretCode) VALUES (?, ?, ?);`, [req.body.url, req.body.alias, secretCode], (err, status) => {
+            connection.query(`INSERT INTO alias (url, alias, secretCode) VALUES (?, ?, ?);`, [req.body.url, req.body.alias, secretCode], (err, status) => {
         if (err) {
           console.log(err.toString());
           res.status(500).send('Database error');
@@ -61,7 +92,7 @@ app.post('/api/links', (req, res) => {
             res.status(500).send('Database error');
             return;
           }
-          res.send(rows);
+          res.status(201).json(rows);
         });
       });
     } else { // if alias exists
@@ -69,7 +100,7 @@ app.post('/api/links', (req, res) => {
     }
   });
 });
-
+ */
 app.delete('/api/links/:id', (req, res) => {
   let reqCode = req.body.secretCode;
   connection.query(`SELECT secretCode FROM alias WHERE id = ?`, [req.params.id], (err, rows) => {
@@ -126,4 +157,6 @@ app.get('/a/:alias', (req, res) => {
   });
 });
 
-app.listen(port, () => console.log(`Server is running on port ${port}.`));
+app.listen(port, () => console.log(`Server is running on port ${port}`));
+
+module.exports = app;
