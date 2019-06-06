@@ -14,7 +14,7 @@ function getAQuestion() {
         option.setAttribute("data-aid", answer.aid);
       })
     })
-};
+}
 
 function chooseOption() {
   document.querySelector('#answers').addEventListener('click', (event) => {
