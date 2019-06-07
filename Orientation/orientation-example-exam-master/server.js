@@ -29,9 +29,9 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, './public/index.html'));
 });
 
-const mysqlQueryPromise = (mySQLQueryText, details) => {
+const mysqlQueryPromise = (mysqlQuery, details) => {
   return new Promise((resolve, reject) => {
-    connection.query(mySQLQueryText, details,
+    connection.query(mysqlQuery, details,
       (error, data) => {
         error ? reject(error) : resolve(data);
       }
@@ -72,7 +72,9 @@ app.post('/api/links', (req, res) => {
     })
     .catch(error => console.log(error))
 });
- /*  connection.query(`SELECT * FROM alias WHERE alias = ?`, [req.body.alias], (err, rows) => {
+/*  
+app.post('/api/links', (req, res) => {
+  connection.query(`SELECT * FROM alias WHERE alias = ?`, [req.body.alias], (err, rows) => {
     if (err) {
       console.log(err.toString());
       res.status(500).send('Database error');
@@ -101,8 +103,30 @@ app.post('/api/links', (req, res) => {
   });
 });
  */
+
 app.delete('/api/links/:id', (req, res) => {
   let reqCode = req.body.secretCode;
+  mysqlQueryPromise(`SELECT secretCode FROM alias WHERE id = ?`, [req.params.id])
+    .then(data => {
+      if (data.length === 0) {
+        res.status(404).send();
+      } else {
+        if (data[0].secretCode === reqCode) {
+          mysqlQueryPromise(`DELETE FROM alias WHERE id = ?;`, [req.params.id])
+            .then(data => {
+              res.status(204).send();
+            })
+            .catch(error => console.log(error))
+        } else {
+          res.status(403).send();
+        }
+      }
+    })
+    .catch(error => console.log(error))
+});
+
+/* 
+app.delete('/api/links/:id', (req, res) => {
   connection.query(`SELECT secretCode FROM alias WHERE id = ?`, [req.params.id], (err, rows) => {
     if (err) {
       console.log(err.toString());
@@ -126,8 +150,29 @@ app.delete('/api/links/:id', (req, res) => {
       }
     }
   });
+}); */
+
+app.get('/a/:alias', (req, res) => {
+  mysqlQueryPromise(`SELECT * FROM alias WHERE alias = ?`, [req.params.alias])
+    .then(data => {
+      if (data.length === 0) { // if alias does not exist
+        res.status(404).send();
+      } else { // if alias exists
+        mysqlQueryPromise(`UPDATE alias SET hitCount = hitCount + 1 WHERE alias = ?`, [req.params.alias])
+          .then(data => {
+            mysqlQueryPromise(`SELECT url FROM alias WHERE alias = ?`, [req.params.alias])
+              .then(data => {
+                res.redirect(data[0].url);
+              })
+              .catch(error => console.log(error))
+          })
+          .catch(error => console.log(error))
+      }
+    })
+    .catch(error => console.log(error))
 });
 
+/* 
 app.get('/a/:alias', (req, res) => {
   connection.query(`SELECT * FROM alias WHERE alias = ?`, [req.params.alias], (err, rows) => {
     if (err) {
@@ -155,7 +200,7 @@ app.get('/a/:alias', (req, res) => {
       })
     }
   });
-});
+}); */
 
 app.listen(port, () => console.log(`Server is running on port ${port}`));
 
