@@ -27,26 +27,28 @@ h1 {
   flex-direction: column;
   background-color: #fff;
   border-radius: 15px;
-  height: 300px;
-  justify-content: center;
-  padding: 30px 60px 60px 60px;
-  max-width: 300px;
+  height: 500px;
+  justify-content: space-evenly;
+  padding: 30px 100px 60px 100px;
+  width: 500px;
 }
 
 button {
-  align-self: center;
   background-color:#75c3ff;
   border-style: none;
-  border-radius:10px;
+  border-radius:8px;
   color:#ffffff;
   cursor:pointer;
   display:inline-block;
-  font-size:16px;
-  height: 40px;
+  font-family: 'ZCOOL KuaiLe', cursive;
+  font-size:24px;
+  font-weight: 600;
+  height: 80px;
   margin-top: 20px;
   padding: auto;
   text-decoration:none;
-  width: 150px;
+  letter-spacing: 2px;
+  width: 300px;
 }
 
 button:hover {
@@ -60,7 +62,6 @@ top:1px;
 
 .username {
   position: relative;
-  margin: auto;
   width: 100%;
   max-width: 280px;
 }
@@ -92,8 +93,8 @@ top:1px;
   border: 0;
   font-family: inherit;
   padding: 12px 0;
-  height: 48px;
-  font-size: 16px;
+  height: 80px;
+  font-size: 32px;
   font-weight: 500;
   border-bottom: 2px solid #c8ccd4;
   background: none;
