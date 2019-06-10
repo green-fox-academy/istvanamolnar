@@ -68,3 +68,7 @@ addQuestionForm.addEventListener('submit', (event) => {
     dataDiv.lastChild.setAttribute("data-id", data.id);
   })
 });
+
+document.querySelector('#backToGame').addEventListener('click', (event) => {
+  window.location.href = "http://localhost:3000/";
+})

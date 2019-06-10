@@ -20,7 +20,6 @@ body {
   font-size: 36px;
   font-weight: 700;
   letter-spacing: 3px;
-  padding: 20px;
 }
 
 #score {
@@ -28,7 +27,7 @@ body {
   font-size: 36px;
   font-weight: 700;
   letter-spacing: 3px;
-  padding: 20px;
+  padding: 20px 0;
 }
 
 #questionarea {
@@ -39,7 +38,7 @@ body {
   flex-direction: column;
   height: 500px;
   justify-content: space-evenly;
-  padding: 30px 60px 60px 60px;
+  padding: 30px 60px;
   width: 500px;
 }
 
@@ -50,7 +49,7 @@ body {
   font-size: 28px;
   font-weight: 600;
   max-height: 250px;
-  justify-content: center;
+  justify-content: space-around;
   text-align: center;
 }
 
@@ -61,7 +60,7 @@ body {
 #answers {
   display: flex;
   flex-direction: column;
-  height: 300px;
+  min-height: 300px;
   justify-content: space-between;
   text-align: center;
 }
@@ -77,6 +76,14 @@ body {
   height: 65px;
   justify-content: center;
   letter-spacing: 2px;
+  margin: 0;
+}
+
+.answer:hover {
+  -webkit-box-shadow: inset 0px 0px 20px 5px rgba(75, 75, 75, 0.75);
+-moz-box-shadow: inset 0px 0px 20px 5px rgba(75, 75, 75, 0.75);
+box-shadow: inset 0px 0px 20px 5px rgba(75, 75, 75, 0.75);
+  cursor: pointer;
 }
 
 #managequestions {
@@ -104,24 +111,34 @@ body {
 
 button {
   align-self: center;
-  background-color:#75c3ff;
+  background-color:#CC4BC2;
   border-style: none;
-  border-radius:10px;
+  border-radius:50px;
   color:#ffffff;
   cursor:pointer;
-  font-size:20px;
+  font-family: 'ZCOOL KuaiLe', cursive;
+  font-size:40px;
   font-weight: 600;
-  height: 60px;
-  margin-top: 20px;
+  height: 250px;
+  padding: 40px 0;
   text-decoration:none;
-  width: 200px;
+  width: 400px;
 }
 
 button:hover {
-background-color:#349ef0;
+  -webkit-box-shadow: inset 0px 0px 20px 5px rgba(75, 75, 75, 0.75);
+-moz-box-shadow: inset 0px 0px 20px 5px rgba(75, 75, 75, 0.75);
+box-shadow: inset 0px 0px 20px 5px rgba(75, 75, 75, 0.75);
+  cursor: pointer;
 }
-/* 
-button:active {
-position:relative;
-top:1px;
-} */
+
+.bye {
+  color: #fff;
+  font-family: 'ZCOOL KuaiLe', cursive;
+  text-shadow: 3px 3px #4b98db;
+  font-size: 42px;
+  font-weight: 600;
+  margin: 0;
+  text-align: center;
+  order: 1;
+}

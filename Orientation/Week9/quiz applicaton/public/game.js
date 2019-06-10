@@ -33,53 +33,87 @@ function getAQuestion() {
 
 function getLootBox() {
   clearTable();
-  document.querySelector('#question').firstChild.innerText = `WELL PLAYED!`;
-  document.querySelector('#question').appendChild(document.createElement('DIV')).innerText = `Your score is: ${score}`;
-  document.querySelector('#question').appendChild(document.createElement('DIV')).innerHTML = `REWARD: <span style="font-weight: bolder;">EPIC LootBox</span>`;
+  let container = document.querySelector('#question');
+  container.firstChild.innerText = `WELL PLAYED!`;
+  container.appendChild(document.createElement('DIV')).innerText = `Your score is: ${score}`;
+  container.appendChild(document.createElement('DIV')).innerHTML = `REWARD:`;
+  container.lastChild.style.marginTop = "30px";
   document.querySelector('#answers').remove();
   let getReward = document.createElement('BUTTON');
-  getReward.innerText = "Claim my reward"
-  document.querySelector('#question').appendChild(getReward);
-  getReward.addEventListener('click', (event) => {
-    location.href = 'https://purr.objects-us-east-1.dream.io/i/fa3qi.jpg';
-  })
+  getReward.innerText = "EPIC Loot Box";
+  document.querySelector('#questionarea').appendChild(getReward);
+  getReward.addEventListener('click', () => {
+    let gameArea = document.querySelector('#questionarea');
+    fetch('https://dog.ceo/api/breeds/image/random')
+    .then(data => data.json())
+    .then(data => {
+      while (gameArea.firstChild) {
+        gameArea.removeChild(gameArea.firstChild);
+      }
+      gameArea.style.backgroundImage = `url(${data.message})`;
+      gameArea.style.backgroundSize = '100% 100%';
+      gameArea.style.backgroundRepeat = "no-repeat";
+      return data;
+    })
+    .then(data => {
+      setTimeout(() => {
+        let congrats = document.createElement('P');
+        congrats.innerHTML = "Congtratulations!<br>You have won a cute dog photo!<br>See you later!";
+        congrats.className = "bye";
+        gameArea.appendChild(congrats);
+        gameArea.style.justifyContent = "flex-end";
+      }, 3000);
+      setTimeout(() => {
+        window.location.href = "http://localhost:3000/";
+      }, 7000);
+    })
+    .catch(error => console.log(error));
+  });
 }
 
 function chooseOption() {
-  let showCorrectAnswer;
   getAQuestion();
-  document.querySelector('#answers').addEventListener('click', (event) => {
-    if (event.target.className === 'answer') {
-      event.target.className += ' chosenOption';
-      const answerId = event.target.dataset.aid;
-      const questionId = document.querySelector('#question').dataset.id;
-      fetch(`http://localhost:3000/checkanswer/?qid=${questionId}&aid=${answerId}`)
+  document.querySelector('#answers').addEventListener('click', clickHandler, false);
+}
+
+let clickHandler = function (event) {
+  let showCorrectAnswer;
+  if (event.target.className === 'answer') {
+    document.querySelector('#answers').removeEventListener('click', clickHandler, false);
+    event.target.className += ' chosenOption';
+    const answerId = event.target.dataset.aid;
+    const questionId = document.querySelector('#question').dataset.id;
+    fetch(`http://localhost:3000/checkanswer/?qid=${questionId}&aid=${answerId}`)
       .then((res) => res.json())
       .then((data) => {
         const correctAnswer = document.querySelector(`[data-aid~="${data[0].id}"]`);
         setTimeout(() => {
-          if (parseInt(answerId) === data[0].id) {
-            event.target.className += ' correct';
-            score++;
-          } else {
-            let showCorrectAnswer = setInterval(() => {
-              event.target.className += ' wrong';
-              correctAnswer.className = (correctAnswer.className === 'answer' ? 'answer correct' : 'answer');
-            }, 500);
-          }
+          let showCorrectAnswer = setInterval(() => {
+            if (parseInt(answerId) === data[0].id) {
+              event.target.className = (event.target.className === 'answer' ? 'answer correct' : 'answer');
+              score++;
+            } else {
+                event.target.className += ' wrong';
+                correctAnswer.className = (correctAnswer.className === 'answer' ? 'answer correct' : 'answer');
+            }
+          }, 500);
         }, 3000);
         setTimeout(() => {
           clearInterval(showCorrectAnswer);
           questionCounter++;
-          if (questionCounter > 10) {
+          if (questionCounter > 1) {
             getLootBox();
           } else {
             chooseOption();
           }
         }, 7000);
       })
-    }
-  }, {once: true});
-}
+      .catch(error => console.log(error));
+  }
+};
+
+document.querySelector('#managequestions').addEventListener('click', (event) => {
+  window.location.href = "http://localhost:3000/questions";
+})
 
 chooseOption();
