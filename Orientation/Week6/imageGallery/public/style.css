@@ -89,7 +89,6 @@ p {
 
 #thumbnails {
   display: flex;
-  width: 60vw;
   justify-content: center;
   margin: auto;
 }
