@@ -9,12 +9,14 @@ import { GetWeatherInfoService } from './services/getweatherinfo.service';
 import { GetCountryNameService } from './services/getcountryname.service';
 import { WeatherInfoComponent } from './weather-info/weather-info.component';
 import { SearchComponent } from './search/search.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     WeatherInfoComponent,
-    SearchComponent
+    SearchComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,

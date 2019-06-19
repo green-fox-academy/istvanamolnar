@@ -1,0 +1,52 @@
+#tile {
+  align-items: center;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0px 0px 23px -7px #000000bf;
+  display: flex;
+  font-family: 'Lato', sans-serif;
+  height: 90px;
+  justify-content: space-between;
+  margin: 10px;
+  padding: 20px 40px 20px 50px;
+  width: 350px;
+}
+
+#location { 
+  display: flex;
+  flex-direction: column;
+}
+
+#city {
+  border: 1px solod black;
+  color: #444;
+  font-size: 30px;
+  font-weight: 900;
+  justify-content: space-around;
+  margin: 0;
+  padding: 0;
+}
+
+#country {
+  color: #444;
+  font-size: 18px;
+  font-weight: 600px;
+  margin: 0;
+  padding: 0;
+}
+
+#temp {
+  color: #444;
+  font-size: 40px;
+  font-weight: 400;
+}
+
+#icon {
+  height: 90px;
+  max-width: auto;
+}
+
+#rightSide {
+  display: flex;
+  align-items: center;
+}

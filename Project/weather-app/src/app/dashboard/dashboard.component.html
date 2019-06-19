@@ -1,0 +1,12 @@
+<div *ngIf="cityData" >
+  <div id="tile" *ngFor="let city of cityData">
+    <div id="location">
+        <p id="city">{{ city.city }}</p>
+        <p id="country">{{ city.country }}</p>
+    </div> 
+    <div id="rightSide">
+      <p id="temp">{{ city.temperature }}</p>
+      <p><img id="icon" *ngIf="city" [src]="city.icon"></p>
+    </div>
+  </div>
+</div>
