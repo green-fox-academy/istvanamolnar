@@ -1,0 +1,10 @@
+<div id="tile" *ngIf="info">
+  <div id="location">
+      <p id="city">{{  city }}</p>
+      <p id="country">{{ country }}</p>
+  </div> 
+  <div id="rightSide">
+    <p id="temp">{{ temperature }}</p>
+    <p><img id="icon" *ngIf="icon" [src]="icon"></p>
+  </div>
+</div>

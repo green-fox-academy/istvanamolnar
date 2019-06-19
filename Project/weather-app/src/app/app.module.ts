@@ -1,23 +1,24 @@
-import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { EnvServiceProvider } from './env.service.provider';
+import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { WeatherComponent } from './weather/weather.component';
+import { GetWeatherInfoService } from './getweatherinfo.service';
+import { WeatherInfoComponent } from './weather-info/weather-info.component';
+import { GetCountryNameService } from './getcountryname.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    WeatherComponent
+    WeatherInfoComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [EnvServiceProvider],
+  providers: [GetWeatherInfoService, GetCountryNameService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
