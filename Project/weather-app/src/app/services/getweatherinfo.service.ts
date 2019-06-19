@@ -11,8 +11,8 @@ import { GetCountryNameService } from '../services/getcountryname.service';
 })
 export class GetWeatherInfoService {
   city: City;
-  private citySource = new BehaviorSubject<City>(this.city);
-  currentCity = this.citySource.asObservable();
+  private inputCity = new BehaviorSubject<City>(this.city);
+  currentCity = this.inputCity.asObservable();
 
   constructor(private http: HttpClient, private countryName: GetCountryNameService) { 
     this.getInfo('Ujszilvas');
@@ -21,7 +21,7 @@ export class GetWeatherInfoService {
   getInfo(city: string): any {
     this.http.get(`http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${environment.apiKey}`)
     .subscribe((data: any) => {
-      this.citySource.next(new City(`${Math.round(data['main'].temp - 273)}°C`, data['name'], `http://openweathermap.org/img/w/${data['weather'][0].icon}.png`, this.countryName.getCountryName(data['sys'].country)));
+      this.inputCity.next(new City(`${Math.round(data['main'].temp - 273)}°C`, data['name'], `http://openweathermap.org/img/w/${data['weather'][0].icon}.png`, this.countryName.getCountryName(data['sys'].country)));
       });
   }
 }
