@@ -1,10 +1,10 @@
-<div id="tile" *ngIf="info">
+<div id="tile" *ngIf="city">
   <div id="location">
-      <p id="city">{{  city }}</p>
-      <p id="country">{{ country }}</p>
+      <p id="city">{{ city.city }}</p>
+      <p id="country">{{ city.country }}</p>
   </div> 
   <div id="rightSide">
-    <p id="temp">{{ temperature }}</p>
-    <p><img id="icon" *ngIf="icon" [src]="icon"></p>
+    <p id="temp">{{ city.temperature }}</p>
+    <p><img id="icon" *ngIf="city" [src]="city.icon"></p>
   </div>
 </div>

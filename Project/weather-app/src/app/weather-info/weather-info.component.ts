@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { GetWeatherInfoService } from '../getweatherinfo.service';
-import { GetCountryNameService } from '../getcountryname.service';
+import { GetWeatherInfoService } from '../services/getweatherinfo.service';
+import { City } from '../CityInstance';
 
 @Component({
   selector: 'app-weather-info',
@@ -8,22 +8,11 @@ import { GetCountryNameService } from '../getcountryname.service';
   styleUrls: ['./weather-info.component.css']
 })
 export class WeatherInfoComponent implements OnInit {
-  temperature: string;
-  city: string;
-  icon: string;
-  country: string;
+  city: City;
 
-  constructor(private info: GetWeatherInfoService, private countryName: GetCountryNameService) {
-  }
+  constructor (private info: GetWeatherInfoService) { }
   
   ngOnInit() {
-    this.info.getInfo('Budapest')
-    .subscribe((data: any) => {
-      this.temperature = `${Math.round(data.main.temp - 273)}°C`;
-      this.city = data.name;
-      this.country = this.countryName.getCountryName(data.sys.country)
-      this.icon = `http://openweathermap.org/img/w/${data.weather[0].icon}.png`;
-    })
+    this.info.currentCity.subscribe(data => {this.city = data;});
   }
-
 }
