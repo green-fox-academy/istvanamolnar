@@ -12,6 +12,10 @@
   width: 350px;
 }
 
+#tile:hover {
+  cursor: pointer;
+}
+
 #location { 
   display: flex;
   flex-direction: column;

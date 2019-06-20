@@ -14,7 +14,7 @@ export class DashboardComponent implements OnInit {
   cities: string[];
   cityData: City[];
   constructor(private info: GetWeatherInfoService, private http: HttpClient, private countryName: GetCountryNameService) { 
-    this.cities = ['Amsterdam', 'Basel', 'London', 'Porto', 'Sofia'];
+    this.cities = ['Bangkok', 'Dubai', 'Montevideo', 'New York', 'Sydney'];
     this.cityData = [];
   }
 
