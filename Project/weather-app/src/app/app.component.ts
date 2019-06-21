@@ -1,6 +1,4 @@
 import { Component, AfterViewInit, ElementRef } from '@angular/core';
-import { WeatherInfoComponent } from './weather-info/weather-info.component';
-import { GetCountryNameService } from './services/getcountryname.service';
 
 @Component({
   selector: 'app-root',

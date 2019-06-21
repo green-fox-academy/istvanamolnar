@@ -1,10 +1,16 @@
-<div id="tile" *ngIf="city">
-  <div id="location">
-      <p id="city">{{ city.city }}</p>
-      <p id="country">{{ city.country }}</p>
-  </div> 
-  <div id="rightSide">
-    <p id="temp">{{ city.temperature }}</p>
-    <p><img id="icon" *ngIf="city" [src]="city.icon"></p>
+<div id="container">
+  <app-search (newInputCity)="onNewInput($event)"></app-search>
+  <div id="tile" *ngIf="city && visible">
+    <div id="location">
+        <p id="city">{{ city.name }}</p>
+        <p id="country">{{ city.country }}</p>
+    </div> 
+    <div id="rightSide">
+      <p id="temp">{{ city.temp }}</p>
+      <p><img id="icon" *ngIf="city" [src]="city.icon"></p>
+    </div>
+  </div>
+  <div id="tile" *ngIf="!visible">
+    <p class="unknown">Invalid Entry</p>
   </div>
 </div>

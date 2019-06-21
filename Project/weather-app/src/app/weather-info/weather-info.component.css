@@ -1,3 +1,9 @@
+#container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 #tile {
   align-items: center;
   background-color: #fff;
@@ -53,4 +59,10 @@
 #rightSide {
   display: flex;
   align-items: center;
+}
+
+.unknown {
+  font-size: 24px;
+  font-weight: 600;
+  color: #f86262;
 }
