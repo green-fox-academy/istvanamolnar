@@ -1,14 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { GetWeatherInfoService } from '../services/getweatherinfo.service';
 import { ICity } from '../models/ICity';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit, OnDestroy {
   cities: string[] = ['Bangkok', 'Dubai', 'Montevideo', 'New York', 'Sydney'];
   cityData: ICity[] = [];
   currentCity: ICity = {
@@ -17,6 +17,7 @@ export class DashboardComponent implements OnInit {
     icon: '',
     country: ''
   }
+  subscriptions: Subscription = new Subscription();
 
   constructor(private weatherInfoService: GetWeatherInfoService) { 
     this.getDashboard(this.cities);
@@ -25,16 +26,20 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
   }
 
+  ngOnDestroy() {
+    this.subscriptions.unsubscribe();
+  }
+
   getDashboard(cities) {
     cities.forEach((city:string) => {
-      this.weatherInfoService.getWeatherInfo(city).subscribe((data: any) => {
+      this.subscriptions.add(this.weatherInfoService.getWeatherInfo(city).subscribe((data: any) => {
         this.cityData.push({
           temp: `${Math.round(data['main'].temp - 273)}°C`,
           name: data['name'],
           icon: `http://openweathermap.org/img/w/${data['weather'][0].icon}.png`,
           country: this.getCountryName(data['sys'].country)
         });
-      });
+      }));
     });
   }
   

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { GetWeatherInfoService } from '../services/getweatherinfo.service';
 import { ICity } from '../models/ICity';
+import { take } from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-weather-info',
@@ -24,7 +26,9 @@ export class WeatherInfoComponent implements OnInit {
   }
 
   getWeatherDetails(city: string) {
-    this.weatherInfoService.getWeatherInfo(city).subscribe(
+    this.weatherInfoService.getWeatherInfo(city)
+      .pipe(take(1))
+      .subscribe(
       (data => {
       this.visible = true;
       this.city.temp = `${Math.round(data['main'].temp - 273)}°C`; 
